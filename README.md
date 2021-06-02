@@ -4,3 +4,4 @@
 
 必备环境:jdk1.8,mysql 5.0
 可选择配置：redis与elasticsearch
+访问效果网站：www.tanlong.xyz
