@@ -1,0 +1,127 @@
+﻿<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Title -->
+    <title>随心问答系统</title>
+
+    <!-- Bootstrap Css -->
+    <link href="/css/bootstrap3.min.css" rel="stylesheet" />
+    <!-- Chat Plugin css-->
+    <link href="/assets/js/jquery.convform.css" rel="stylesheet" />
+    <style>
+        button {
+            font-family: 'Microsoft YaHei';
+        }
+    </style>
+
+</head>
+<body class="">
+
+
+    <div class="col-md-6">
+
+        <div class="card">
+            <div class="card-body p-6">
+                <div id="demo">
+                    <div class="vertical-align">
+                        <div class="p-0">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="no-border">
+                                        <div id="chat" class="conv-form-wrapper">
+                                            <form method="GET" class="hidden">
+                                                <input type="text" name="name" data-conv-question="欢迎来到智能问答系统！~" data-no-answer="true">
+                                                <select name="programmer" data-callback="storeState" data-conv-question="请选择所用的搜索引擎">
+                                                    <option value="TLSearch">TLSearch</option>
+                                                    <option value="BaiduSearch">BaiduSearch</option>
+                                                </select>
+                                                <div data-conv-fork="programmer">
+                                                    <div data-conv-case="TLSearch">
+                                                        <input type="text" data-conv-question="没错，这就是在本站进行搜索的! Cool." data-no-answer="true">
+                                                    </div>
+                                                    <div data-conv-case="BaiduSearch">
+                                                        <input type="text" data-conv-question="借助强大的baidu吧!" data-no-answer="true">
+                                                    </div>
+                                                </div>
+
+                                                <input type="text" name="name" data-conv-question="请输入问题！~">
+                                                <input type="text" data-conv-question="看起来很棒吧" data-no-answer="true">
+
+                                                <select name="programmer" data-callback="storeState" data-conv-question="请选择所用的搜索引擎">
+                                                    <option value="TLSearch">TLSearch</option>
+                                                    <option value="BaiduSearch">BaiduSearch</option>
+                                                </select>
+                                                <div data-conv-fork="programmer">
+                                                    <div data-conv-case="TLSearch">
+                                                        <input type="text" data-conv-question="没错，这就是在本站进行搜索的! Cool." data-no-answer="true">
+                                                    </div>
+                                                    <div data-conv-case="BaiduSearch">
+                                                        <input type="text" data-conv-question="借助强大的baidu吧!" data-no-answer="true">
+                                                    </div>
+                                                </div>
+
+                                                <input type="text" name="name" data-conv-question="请输入问题！~">
+
+                                                <select name="programmer" data-callback="storeState" data-conv-question="请选择所用的搜索引擎">
+                                                    <option value="TLSearch">TLSearch</option>
+                                                    <option value="BaiduSearch">BaiduSearch</option>
+                                                </select>
+                                                <div data-conv-fork="programmer">
+                                                    <div data-conv-case="TLSearch">
+                                                        <input type="text" data-conv-question="没错，这就是在本站进行搜索的! Cool." data-no-answer="true">
+                                                    </div>
+                                                    <div data-conv-case="BaiduSearch">
+                                                        <input type="text" data-conv-question="借助强大的baidu吧!" data-no-answer="true">
+                                                    </div>
+                                                </div>
+
+                                                <input type="text" name="name" data-conv-question="请输入问题！~">
+
+                                                <select name="programmer" data-callback="storeState" data-conv-question="请选择所用的搜索引擎">
+                                                    <option value="TLSearch">TLSearch</option>
+                                                    <option value="BaiduSearch">BaiduSearch</option>
+                                                </select>
+                                                <div data-conv-fork="programmer">
+                                                    <div data-conv-case="TLSearch">
+                                                        <input type="text" data-conv-question="没错，这就是在本站进行搜索的! Cool." data-no-answer="true">
+                                                    </div>
+                                                    <div data-conv-case="BaiduSearch">
+                                                        <input type="text" data-conv-question="借助强大的baidu吧!" data-no-answer="true">
+                                                    </div>
+                                                </div>
+
+                                                <input type="text" name="name" data-conv-question="请输入问题！~">
+
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Dashboard js -->
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+    <script>
+
+
+    </script>
+    <!-- Chat js -->
+    <script src="/assets/js/jquery.convform.js"></script>
+
+    <script src="/assets/js/chat.js"></script>
+
+</body>
+</html>
+
+

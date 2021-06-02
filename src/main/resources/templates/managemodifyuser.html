@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>修改个人信息</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+
+    <!--  头像操作-->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <style>
+        .box{
+            width: 480px;
+            margin-top: 100px;
+            margin-left: 30px;
+            text-align: center;
+        }
+        .t_img{
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+        }
+        .s_box{
+            border-radius: 10px;
+            width: 200px;
+            height: auto;
+            border: 1px #c2c2d6 solid;
+            margin-left: 100px;
+            background-color: #00bcd4;
+            z-index:9999;
+            position:absolute;
+            display: none;
+        }
+        .s_box img{
+            width: 61px;
+            height: 61px;
+            margin: 5px;
+            border:1px solid #ccc;
+        }
+        .s_box img:hover{
+            border-color:red ;
+            transform: scale(1.25);
+            transition: .5s;
+        }
+        .header{
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        .close{
+            color:#000;
+            font-size: 21px;
+            opacity: .7;
+            position:absolute;
+            right:8px;
+            top:1px;
+            cursor: pointer;
+        }
+        .bt_box .gb{
+            display:inline-block;
+            width:80px;
+            height:35px;
+            border-radius: 10px;
+            background:#f3f3f3;
+            color:#444;
+            line-height: 35px;
+            margin: 10px;
+        }
+        .bt_box .queren{
+            display:inline-block;
+            width:80px;
+            height:35px;
+            border-radius: 10px;
+            background:#1a53ff;
+            color:white;
+            line-height: 35px;
+        }
+        .bt_box .gb:hover,.bt_box .queren:hover{
+            box-shadow: 0 6px 10px 0 rgba(0,0,0,0.24),0 9px 25px 0 rgba(0,0,0,0.19);
+        }
+
+        .txt_block{
+            margin-left: 220px;
+            font-size: 26px;
+            font-family: "微软雅黑";
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Main Container -->
+<div id="main" class="main">
+
+    <!-- Toolbar -->
+    <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left"  >
+            <a href="/login/toIndex">
+                <i class="ion-log-out m-1 white-text"></i>
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- End of Toolbar -->
+
+<!-- Page Contents -->
+<div class="page animated fadeinup">
+
+    <!-- Map -->
+    <iframe class="animated fadein" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5599.196928323742!2d12.325518833381638!3d45.43759504323885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1c522b9ff8b%3A0x99152494aa933290!2sCampo+San+Polo+Birraria+La+Corte!5e0!3m2!1sit!2sit!4v1446157055047" style="border:none;width:100%;height:350px;"></iframe>
+    <div class="page fullscreen grey lighten-4">
+
+        <!-- Form Inputs -->
+        <form action="/index/managesave" method="post"  class="login-form z-depth-1" th:object="${userModel.user}"  enctype="multipart/form-data">
+
+            <input type="hidden" name="headpicture" th:value="*{headpicture}">
+            <input type="hidden" name="id" th:value="*{id}">
+            <input type="hidden" name="goodtimes" th:value="*{goodtimes}">
+            <input type="hidden" name="state" th:value="*{state}">
+            <input type="hidden" name="root" th:value="*{root}">
+            <input type="hidden" name="grade" th:value="*{grade}">
+
+
+            <!--  头像操作-->
+            <div class="box">
+                <div class="replace" style="font-weight: bolder">点击图片更换头像</div>
+                <div class="ft_img" id="ft_img">
+                    <div th:if="${userModel.user.headpicture} eq null">
+                        <img src="/img/banner1.jpg" name="" class="t_img"/>
+                    </div>
+                    <div th:if="${userModel.user.headpicture} ne null">
+                        <img th:src="@{'/login/picture?name='+${userModel.user.headpicture}}" class="t_img"/>
+                    </div>
+                </div>
+                <div class="s_box" id="sbox">
+                    <div class="header">
+                        <p>设置头像</p>
+                        <span class="close" id="close">x</span>
+                    </div>
+
+                    <div class="bt_box">
+                        <input type="file" name="file" id="file" accept="image/*"/>
+                        <a class="gb" href="javascript:" id="hide">关闭</a>
+                        <a class="queren" href="javascript:" id="but">保存头像</a>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                /* 隐藏，显现效果 */
+                $(".t_img").click(function(){
+                    $("#sbox").show("slow");
+                });
+                $("#hide").click(function(){
+                    $("#sbox").hide("slow");
+                });
+                $("#close").click(function(){
+                    $("#sbox").hide("slow");
+                });
+
+                //点击确认修改按钮更换头像
+                $("#but").click(function(){
+                    $("#sbox").hide("slow");
+                })
+
+                //将选中的图片替换头像的图片
+                $("#file").change(function(){
+                    var objUrl = getObjectURL(this.files[0]) ;
+                    if (objUrl) {
+                        $(".t_img").attr("src", objUrl) ;
+                    }
+                }) ;
+                //创建一个可存取到该file的url
+                function getObjectURL(file) {
+                    var url = null ;
+                    // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+                    if (window.createObjectURL != undefined) { // basic
+                        url = window.createObjectURL(file) ;
+                    } else if (window.URL != undefined) { // mozilla(firefox)
+                        url = window.URL.createObjectURL(file) ;
+                    } else if (window.webkitURL != undefined) { // webkit or chrome
+                        url = window.webkitURL.createObjectURL(file) ;
+                    }
+                    return url ;
+                }
+            </script>
+
+            <div class="form-inputs p-20">
+                <div>
+                    <div class="input-field animated fadeinright">
+                        <input id="name" name="name" type="text" class="validate" th:value="*{name}">
+                        <label for="name">姓名</label>
+                    </div>
+                </div>
+                <div class="input-field animated fadeinright delay-2">
+                    <input id="userId" name="userId" type="number" oninput="if(value.length>8)value=value.slice(0,7)" th:value="*{userId}">
+                    <label for="userId">学号(八位纯数字)</label>
+                </div>
+                <div class="input-field animated fadeinright delay-3">
+                    <input id="password" name="password" type="text" class="validate" th:value="*{password}">
+                    <label for="password">密码(一次输入记住了)</label>
+                </div>
+
+                <div class="input-field animated fadeinright delay-4">
+                    <input id="signature" name="signature" type="text" class="validate" th:value="*{signature}">
+                    <label for="signature">个性签名(放飞自我)</label>
+                </div>
+
+                <div class="input-field animated fadeinright delay-5">
+                    <input id="sex" name="sex" type="text" class="validate" th:value="*{sex}">
+                    <label for="sex">性别</label>
+                </div>
+
+
+
+
+                <div class="input-field animated fadeinright delay-5">
+                    <input id="speciality" placeholder="软件工程/计算机科学与技术/物联网工程/电子信息工程/其它" name="speciality" type="text" class="validate" th:value="*{speciality}">
+                    <label for="speciality">所在专业</label>
+                </div>
+
+                <button class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2" type="submit" style="width: 100%" value="修改">修改</button>
+            </div>
+        </form>
+    </div>
+    <!-- End of Form -->
+
+    <!-- Footer -->
+    <footer class="page-footer primary-color">
+        <div class="section center">
+            <h2 class="heading white-text">无形之刃，IT致命</h2>
+            <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝.</p>
+            <div class="footer-icons">
+                <i class="ion-social-facebook m-10 white-text"></i>
+                <i class="ion-social-twitter m-10 white-text"></i>
+                <i class="ion-social-pinterest m-10 white-text"></i>
+                <i class="ion-social-instagram m-10 white-text"></i>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container center">
+                <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- End of Page Contents -->
+
+<!-- Sidebars -->
+
+
+
+<!-- End of Sidebars -->
+
+</div>
+<!-- End of Main Container -->
+
+<!-- Scripts -->
+<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="/js/helper.js"></script>
+<script src="/js/vendor/HeadsUp.js"></script>
+<script src="/js/vendor/jquery.smoothState.js"></script>
+<script src="/js/vendor/chart.min.js"></script>
+<script src="/js/vendor/jquery.mixitup.min.js"></script>
+<script src="/js/vendor/jquery.swipebox.min.js"></script>
+<script src="/js/vendor/masonry.min.js"></script>
+<script src="/js/vendor/swiper.min.js"></script>
+<script src="/js/vendor/materialize.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

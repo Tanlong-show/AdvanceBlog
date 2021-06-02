@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>数据概览</title>
+
+    <link rel="stylesheet" href="/css/base.css">
+
+</head>
+<body>
+<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="/js/base.js"></script>
+<link rel="stylesheet" href="/css/main.css">
+<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+<!-- Toolbar -->
+<div id="toolbar" class="primary-color tool-login">
+    <div class="open-left"  >
+        <a href="/login/toIndex">
+            <i class="ion-log-out m-1 white-text"></i>
+        </a>
+    </div>
+</div>
+<div class="jx">
+    <div class="ysu">
+        <h4 class="ti"> 360度解析系统/用户状态(移动端双击屏幕放大查看)</h4>
+        <p class="y_info">系统正在24小时不间断运行中......还有没使用该系统的小伙伴吗？赶紧邀请他/她加入进来吧，hbuer校园交流通期待您的加入~</p>
+    </div>
+
+
+    <div class="L_transform">
+        <div class="trans_bg">
+            <div class="bg_shade"></div>
+            <div class="circles topcircle">
+                <div class="trio"><p>用户总量</p><i></i></div>
+                <div class="pos">
+                    <span th:text="@{'用户总人数: '+${fullModel.allpeople}}"></span>
+                </div>
+            </div>
+            <div class="circles leftcircle active">
+                <div class="trio"><p>在线人数</p><i></i></div>
+                <div class="pos">
+                    <span>厚德博学、经世济民 </span>
+                    <span th:text="@{'在线小伙伴: '+${fullModel.greenpeople}}"></span>
+                </div>
+            </div>
+            <div class="circles rightcircle">
+                <div class="trio"><p>服务器承载率</p><i></i></div>
+                <div class="pos">
+                    <span>虚拟cpu</span>
+                    <span th:text="@{'模拟承载压力: '+${fullModel.pressure}+'%'}"></span>
+                </div>
+            </div>
+            <div class="heart_box">
+                <div class="heart"></div>
+                <div class="shan" style="transform: rotate(274deg);"></div>
+            </div>
+        </div>
+    </div>
+
+    <a class="mfbtn" href="/index/go2">转入流量数据与PK界面</a>
+</div>
+
+
+
+</body>
+</html>

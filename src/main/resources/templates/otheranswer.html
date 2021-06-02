@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Ta的回复</title>
+
+    <link rel="stylesheet" href="/css/flowChart.css" />
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+</head>
+<style>
+    #toolbar {
+        width: 100%;
+        height: 20px;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        transition: all .25s ease-in-out;
+    }
+    .tool-login, .tool-signup {
+        position: absolute;
+        top: 0;
+        height: 40px !important;
+    }
+    .primary-color {
+        background-color: #01acc6 !important;
+    }
+    *, ::before, ::after {
+        box-sizing: inherit;
+    }
+    .NodeDetail-content img {
+        width: 24px;
+        height: 24px;
+        border-radius: 0px;
+    }
+</style>
+<body style="background-color: rgb(245, 245, 245);">
+<!-- Toolbar -->
+<div id="toolbar" class="primary-color tool-login">
+    <div class="open-left"  >
+        <a href="/login/toIndex">
+            <span style="font-weight: bold;text-decoration: none;color: white;font-style: initial"><-返回主页</span>
+        </a>
+    </div>
+</div>
+<br><br>
+    <hr />
+    <!--事件时间轴-->
+    <div class="flowChart">
+        <!--左侧轴-->
+        <div class="flowChart-left">
+            <!--虚线-->
+            <div class="dashed"></div>
+        </div>
+        <!--右侧内容-->
+        <div class="flowChart-right">
+            <!--一个节点-->
+            <nobr th:each="article:${answerModel.articleList}">
+                <nobr th:each="commentUser:${answerModel.commentUserList}">
+                    <nobr th:if="${commentUser.articleId} eq ${article.id}">
+
+                        <div class="oneNode">
+                            <!--左侧小球-->
+                            <div class="check check-prime" th:text="${articleStat.index}+1">
+                            </div>
+                            <div class="tag-boder">
+                                <div class="tag">
+                                </div>
+                            </div>
+                            <!--右侧内容-->
+                            <div class="NodeDetail">
+                                <!--上-->
+                                <div class="NodeDetail-title">
+                                    <!--头像-->
+                                    <img th:src="@{'/login/picture?name='+${commentUser.headpicture}}" />
+                                    <!--内容-->
+                                    <div class="details">
+                                        <h4 th:text="${commentUser.userName}"></h4>
+                                        <p style="font-weight: bold;font-style: italic;font-size: 11px;max-width: 120px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"
+                                           th:text="'文章: '+${article.title}"></p>
+                                    </div>
+                                </div>
+                                <!--中-->
+                                <div class="NodeDetail-content">
+                                    <span class="badge">评论你:</span>
+                                    <p th:utext="${commentUser.content}"></p>
+                                </div>
+                                <!--下-->
+                                <div class="NodeDetail-footer">
+                                    <span th:text="${commentUser.commentDate}"></span>
+                                </div>
+                            </div>
+                         </div>
+
+                            <!-- 加载回复-->
+                        <nobr th:each="answer:${answerModel.answerList}">
+                            <nobr th:if="${answer.commentId} eq ${commentUser.id}">
+                                <div class="oneNode">
+                                    <!--左侧小球-->
+                                    <div class="check check-success" th:text="${articleStat.index}+1">
+                                    </div>
+                                    <div class="tag-boder">
+                                        <div class="tag">
+                                        </div>
+                                    </div>
+                                    <!--右侧内容-->
+                                    <div class="NodeDetail">
+                                        <!--上-->
+                                        <div class="NodeDetail-title">
+                                            <!--头像-->
+                                            <img th:src="@{'/login/picture?name='+${answer.headpicture}}" />
+                                            <!--内容-->
+                                            <div class="details">
+                                                <h4 th:text="${answer.name}"></h4>
+                                                <p style="font-weight: bold;font-style: italic;font-size: 11px;max-width: 120px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"
+                                                   th:text="'文章: '+${article.title}"></p>
+                                            </div>
+                                        </div>
+                                        <!--中-->
+                                        <div class="NodeDetail-content">
+                                            <span class="badge" th:text="@{'回复:'+${commentUser.userName}}">
+                                            </span>
+                                            <p th:utext="${answer.content}"></p>
+                                        </div>
+                                        <!--下-->
+                                        <div class="NodeDetail-footer">
+                                            <span th:text="${answer.time}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nobr>
+                        </nobr>
+                    </nobr>
+                </nobr>
+
+            </nobr>
+            <hr style="size: 15px;color: #2aabd2;width: 98%;border-bottom:5px solid;" noshade="true">
+            <nobr style="color: #2aabd2;font-weight: bold;font-style: italic;">End</nobr>
+        </div>
+    </div>
+
+</body>
+</html>

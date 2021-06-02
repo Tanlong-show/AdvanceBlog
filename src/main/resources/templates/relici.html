@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>搜索热力词统计</title>
+    <meta name="Solid - Bar Graphs" content="Responsive Bar Graphs" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/css2/styles-graph.css" type="text/css" />
+    <link rel="stylesheet" href="/css2/font-awesome-4.3.0/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="/css2/media-graph.css" type="text/css" id="responsiveness" />
+</head>
+<body style="background-color: #2aabd2">
+    <div id="wrapper">
+
+        <section class="solid-graphs theme-margin-bottom border-radius-10" id="temporary-container">
+            <div class="l-container">
+                <h3 class="text-center" style="color: red"><i style="color: red" class="fa fa-fire"></i> Hot 搜索热力词</h3>
+                <div class="l-row chart-container chart-container-bar">
+                    <div class="l-col-2 bar-y-axis">
+                        <ul class="chart-bar-y-axis">
+
+                            <li th:each="key : ${reliciModel.stringList}"><span th:text="${key}"></span></li>
+
+                        </ul>
+                    </div>
+                    <div class="l-col-10">
+                        <ul class="chart-bars" id="1000">
+                            <li><span style="width: 10%" id="11" class="bg-warning"></span></li>
+                            <li><span style="width: 10%" id="22" class="bg-default"></span></li>
+                            <li><span style="width: 90%" id="33" class="bg-caution"></span></li>
+                            <li><span style="width: 50%" id="44" class="bg-alternate"></span></li>
+                            <li><span style="width: 60%" id="55" class="bg-info"></span></li>
+                            <li><span style="width: 70%" id="66" class="bg-orange"></span></li>
+                            <li><span style="width: 40%" id="77" class="bg-maroon"></span></li>
+                            <li><span style="width: 77%" id="88" class="bg-purple"></span></li>
+                            <li><span style="width: 21%" id="99" class="bg-muted"></span></li>
+                        </ul>
+                    </div>
+                    <input type="hidden" id="1"  th:value="${reliciModel.integer1}">
+                    <input type="hidden" id="2"  th:value="${reliciModel.integer2}">
+                    <input type="hidden" id="3"  th:value="${reliciModel.integer3}">
+                    <input type="hidden" id="4"  th:value="${reliciModel.integer4}">
+                    <input type="hidden" id="5"  th:value="${reliciModel.integer5}">
+                    <input type="hidden" id="6"  th:value="${reliciModel.integer6}">
+                    <input type="hidden" id="7"  th:value="${reliciModel.integer7}">
+                    <input type="hidden" id="8"  th:value="${reliciModel.integer8}">
+                    <input type="hidden" id="9"  th:value="${reliciModel.integer9}">
+                    <input type="hidden" id="10" th:value="${reliciModel.total}">
+
+                    <script>
+                        window.onload = function ready(){
+                            var total = $("#10").val()
+                            var s = document.getElementById(1).value/total*150+"%"
+                            var obj = document.getElementById(11)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(2).value/total*150+"%"
+                            var obj = document.getElementById(22)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(3).value/total*150+"%"
+                            var obj = document.getElementById(33)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(4).value/total*150+"%"
+                            var obj = document.getElementById(44)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(5).value/total*150+"%"
+                            var obj = document.getElementById(55)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(9).value/total*150+"%"
+                            var obj = document.getElementById(99)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(6).value/total*150+"%"
+                            var obj = document.getElementById(66)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(7).value/total*150+"%"
+                            var obj = document.getElementById(77)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                            var s = document.getElementById(8).value/total*150+"%"
+                            var obj = document.getElementById(88)
+                            obj.style.width = s
+                            obj.textContent= s.substring(0,4)+"%";
+
+                        }
+
+                    </script>
+
+                    <div class="l-col-10 l-col-offset-2 bar-x-axis">
+                        <ul class="text-small chart-bar-x-axis l-group">
+                            <li>0</li>
+                            <li>5</li>
+                            <li>10</li>
+                            <li>15</li>
+                            <li>20</li>
+                            <li>25</li>
+                            <li>30</li>
+                            <li>35</li>
+                            <li>40</li>
+                            <li>45</li>
+                            <li>50</li>
+                            <li>55</li>
+                            <li>60</li>
+                            <li>65</li>
+                            <li>70</li>
+                            <li>75</li>
+                            <li>80</li>
+                            <li>85</li>
+                            <li>90</li>
+                            <li>95</li>
+                            <li>100</li>
+                        </ul>
+                    </div>
+                </div>
+                <h4 class="text-center">IT校园通平台搜索数据概览</h4>
+            </div>
+        </section>
+    </div>
+    <script src="/js2/vendor/jquery-1.11.1.min.js" type="text/javascript"></script>
+</body>
+</html>

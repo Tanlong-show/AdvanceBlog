@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <title>留言板</title>
+
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/tinymce/5.4.2/tinymce.min.js"></script>
+<!--    <script src="https://cdn.tiny.cloud/1/eoxem6iuxwyqi1t47l12ioh0g0wr2c07bqcomjea60le808e/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
+
+
+
+    <script>
+      tinymce.init({
+        selector: "#mytextarea2"
+      });
+
+
+    </script>
+  </head>
+  
+  <body>
+        
+    <!-- Main Container -->
+    <div id="main" class="main">
+
+      <!-- Toolbar -->
+      <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left"  >
+          <a href="/login/toIndex">
+            <i class="ion-log-out m-1 white-text"></i>
+          </a>
+        </div>
+      </div><br><br>
+      <!-- End of Toolbar -->
+
+      <!-- Page Contents -->
+      <div class="page animated fadeinup">
+        <div class="chat p-20">
+          <ul id="msgs" style="overflow: scroll;overflow-x:hidden;height: 300px;">
+            <div th:each="say : ${chatModel.list}">
+              <div th:if="${say.userId} eq ${chatModel.user.id}">
+                <li class="message-right animated fadeinright">
+                  <img alt="" th:src="@{'/login/picture?name='+${chatModel.user.headpicture}}">
+                  <div class="message">
+                    <p th:utext="${say.content}"></p>
+                  </div>
+                  <span th:text="${say.time}"></span>
+                </li>
+              </div>
+
+
+              <div th:if="${say.userId} ne ${chatModel.user.id}">
+                <li class="message-left animated fadeinright delay-3">
+                  <img alt="" th:src="@{'/login/picture?name='+${chatModel.friend.headpicture}}">
+                  <div class="message">
+                    <p th:utext="${say.content}"></p>
+                  </div>
+                  <span th:text="${say.time}"></span>
+                </li>
+              </div>
+            </div>
+<!--            自己-->
+            <input type="hidden" id="userhead" th:value="@{'/login/picture?name='+${chatModel.user.headpicture}}">
+<!--            对方-->
+            <input type="hidden" id="userhead2" th:value="@{'/login/picture?name='+${chatModel.friend.headpicture}}">
+          </ul>
+        </div>
+
+      </div> 
+      <!-- End of Page Contents -->
+
+<!--      <form method="post" action="/chat/message">-->
+        <textarea id="mytextarea2" name="content"></textarea>
+        <button id="send" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2" type="submit" style="margin-left:10px;margin-top: 16px;width: 360px">发送</button>
+<!--      </form>-->
+
+    </div>
+    <!-- End of Main Container -->
+    
+    <!-- Scripts -->
+    <script src="/js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="/js/helper.js"></script>
+    <script src="/js/vendor/HeadsUp.js"></script>
+    <script src="/js/vendor/jquery.smoothState.js"></script>
+    <script src="/js/vendor/chart.min.js"></script>
+    <script src="/js/vendor/jquery.mixitup.min.js"></script>
+    <script src="/js/vendor/jquery.swipebox.min.js"></script>
+    <script src="/js/vendor/masonry.min.js"></script>
+    <script src="/js/vendor/swiper.min.js"></script>
+    <script src="/js/vendor/materialize.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script>
+      //时间格式转换
+      var formatDateTime = function (date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        m = m < 10 ? ('0' + m) : m;
+        var d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        var h = date.getHours();
+        h=h < 10 ? ('0' + h) : h;
+        var minute = date.getMinutes();
+        minute = minute < 10 ? ('0' + minute) : minute;
+        var second=date.getSeconds();
+        second=second < 10 ? ('0' + second) : second;
+        return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+      };
+
+
+      var head2 = $("#userhead2").val();
+      var rowStr2;
+      var time2;
+      //消息接受
+      setInterval(function (){
+        //获取头像
+
+        $.ajax({
+          url: '/chat/message2',
+          type:"post",
+          success:function(result){
+            // var r = JSON.parse(repon.result);
+            //返回数据循环取出拼接页面表单展示
+            dataType:"json" //返回格式为json
+            if(result != ""){
+
+              rowStr2 = '              <li class="message-left animated fadeinright delay-3">\n' +
+                      '                  <img alt="" src="'+head2+'">\n' +
+                      '                  <div class="message">\n' +
+                      '                    <p>'+result.content+'</p>\n' +
+                      '                  </div>\n' +
+                      '                  <span>'+result.time+'</span>\n' +
+                      '                </li>'
+              $('#msgs').append(rowStr2)
+              $("#msgs").scrollTop($("#msgs").prop('scrollHeight'));
+
+            }
+          }
+        });
+      },2000);
+
+
+
+
+      //获取头像
+      var head = $("#userhead").val();
+      //消息发送
+      $("#send").click(function () {
+
+        //获取内容
+        // var Inputcontent = document.getElementById('mytextarea').innerHTML
+        // var Inputcontent = $("#mytextarea2").val();
+        var Inputcontent = tinyMCE.activeEditor.getContent()
+        //发送请求
+        // alert(Inputcontent)
+        // alert(head)
+        var rowStr;
+        var time = formatDateTime(new Date());
+        rowStr = '                <li class="message-right animated fadeinright">\n' +
+                '                  <img alt="" src="'+head+'">\n' +
+                '                  <div class="message">\n' +
+                '                    <p>'+Inputcontent+'</p>\n' +
+                '                  </div>\n' +
+                '                  <span>'+time+'</span>\n' +
+                '                </li>'
+        $.ajax({
+            url: '/chat/message?Inputcontent=' + Inputcontent,
+            // dataType:"json",
+            // type: "get",
+            // timeout: 2000,
+          // $(window).attr('location', '/chat/message?Inputcontent=' + Inputcontent);
+        });
+        tinyMCE.activeEditor.setContent("");
+        $('#msgs').append(rowStr)
+        $("#msgs").scrollTop($("#msgs").prop('scrollHeight'));
+
+      })
+
+      $("#msgs").scrollTop($("#msgs").prop('scrollHeight'));
+
+
+
+
+    </script>
+
+  </body>
+</html>

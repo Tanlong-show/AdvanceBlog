@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/rangestyle.css" rel="stylesheet" type="text/css">
+
+    <title>等级排行</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main2.css">
+    <link rel="stylesheet" href="/css/layui.css" type="text/css">
+    <script type="text/javascript" src="/js/vendor/modernizr-2.7.1.min.js"></script>
+    <script type="text/javascript" src="/js/layui.all.js"></script>
+    <script src="/js/vendor/jquery-2.1.0.min.js"></script>
+
+<!--    layui初始化-->
+    <script>
+        $(document).ready(function () {
+            var element = layui.element;
+            element.render();
+        });
+
+    </script>
+
+    <style type="text/css">
+        /* 电脑端 */
+        .fenge1{
+            width: 100%;
+            height: 10px;
+            margin-top:10px;
+            line-height: 10px;
+        }
+        .fenge1>.fenge1-font{
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: Microsoft YaHei;
+            color: #585858;
+            overflow: hidden;
+        }
+        .fenge1>.xian1{
+            float: left;
+            width: 100%;
+            border-bottom: 2px solid #E9E9E9;
+            position: relative;
+            bottom: 13px;
+            left: 90px;
+            overflow: hidden;/
+        }
+        .fenge2{
+            width: 100%;
+            height: 10px;
+            /* background-color: lightgreen; */
+            margin-top:10px;
+            line-height: 30px;
+        }
+        .fenge2>.fenge2-font{
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: Microsoft YaHei;
+            color: #585858;
+            overflow: hidden;
+        }
+        .fenge2>.xian2{
+            float: left;
+            width: 100%;
+            border-bottom: 2px solid #E9E9E9;
+            position: relative;
+            bottom: 13px;
+            left: 90px;
+            overflow: hidden;/
+        }
+        /* 媒体查询-手机样式 */
+        @media screen and (max-width:600px) {
+
+        }
+    </style>
+</head>
+<body style="background-color: seashell">
+    <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left"  >
+            <a href="/login/toIndex">
+                <i class="ion-log-out m-1 white-text"></i>
+            </a>
+        </div>
+    </div>
+
+<div id="content" style="background-color: white">
+    <div id="left">
+        <span class="left-top" style="text-align: left;">等级成长</span>
+        <div class="left-content">
+            <img th:src="@{'/login/picture?name='+${levelModel.user.headpicture}}" alt="" class="headphoto">
+            <div class="left-right-top" style="text-align: left">
+                <span th:text="${levelModel.user.name}"></span>
+                <span class="Current-level" th:text="'LV'+${levelModel.level}"></span>
+            </div>
+
+
+            <div class="left-right-bottom" style="text-align: left">
+						<span class="last-level" th:text="'LV'+${levelModel.level}">
+						</span>
+
+                <div class="layui-progress" lay-showPercent="yes" style="width: 85%;">
+                    <div class="layui-progress-bar layui-bg-green" th:lay-percent="${levelModel.process}">
+                    </div>
+                </div>
+                <span class="proportion"></span>
+                <span class="next-level"  th:text="'LV'+${levelModel.level+1}">
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="fenge1">
+        <h3 class="fenge1-font">&nbsp;&nbsp;&nbsp;每日任务</h3>
+        <div class="xian1"></div>
+    </div>
+    <div class="daily-tasks">
+        <ul class="task-content">
+            <li>
+                <img src="/img/collect.png" alt="">
+                <div class="collect-left">
+                    <div style="color: #2aabd2">被ta人收藏&nbsp(收藏自己无效)(+100exp)</div>
+                </div>
+            </li>
+            <li >
+                <img src="/img/answer.png" alt="">
+                <div class="answer-left">
+                    <div >给(ta)人点赞</div>
+                    <div >(+50exp)</div>
+                </div>
+                <div class="answer-right"><a href="/index/blogindex">去完成</a></div>
+            </li>
+            <li>
+                <img src="/img/release.png" alt="">
+                <div class="release-left">
+                    <div>发布一篇文章</div>
+                    <div>(+50exp)</div>
+                </div>
+                <div class="answer-right"><a href="/blog/toWrite">去完成</a></div>
+            </li>
+            <li>
+                <img src="/img/recommend.png" alt="">
+                <div class="recommend-left">
+                    <div>向空间推文</div>
+                    <div>(+50exp)</div>
+                </div>
+                <div class="answer-right"><a href="/index/blogindex">去完成</a></div>
+            </li>
+            <li>
+                <img src="/img/comment.png" alt="" >
+                <div class="comment-left">
+                    <div>给文章评论</div>
+                    <div>(+50exp)</div>
+                </div>
+                <div class="answer-right"><a href="/index/blogindex">去完成</a></div>
+            </li>
+            <li>
+                <img src="/img/duration.png" alt="">
+                <div class="duration-left">
+                    <div>给好友留言</div>
+                    <div>(+50exp)</div>
+                </div>
+                <div class="answer-right"><a href="/login/toIndex">去完成</a></div>
+            </li>
+            </li>
+        </ul>
+    </div>
+    <div class="fenge2">
+        <h3 class="fenge2-font">&nbsp;&nbsp;&nbsp;等级排行</h3>
+        <div class="xian2"></div>
+    </div>
+    <div class="ques-section-item">
+        <div class="ques-section-card">
+            <div class="ques-card-head ques-card-bul">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="30px" xml:space="preserve">
+			            <defs>
+			            <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+			            <path fill="#fff" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"></path>
+							</pattern>
+                            <g id="eff">
+			            <rect fill="url(#water)" x="-119.461" y="0" width="1200" height="120" opacity="0.3">
+			            <animate attributeType="xml" attributeName="x" from="-300" to="0" repeatCount="indefinite" dur="10s"></animate>
+								</rect>
+                                <rect fill="url(#water)" y="5" width="1600" height="125" opacity="0.3" x="-399.447">
+			            <animate attributeType="xml" attributeName="x" from="-400" to="0" repeatCount="indefinite" dur="13s"></animate>
+								</rect>
+							</g>
+						</defs>
+                    <use xlink:href="#eff" opacity="1" style="mix-blend-mode:normal;"></use>
+					</svg>
+            </div>
+            <div class="ques-card-title ques-card-title-top">等级排行榜</div>
+            <ul class="ques-card-list">
+                <div class="ques-list-left">
+                    <li class="ques-card-list-noe">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(0).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(0).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(0).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon001">1</span>
+                        </div>
+                    </li>
+
+                    <li class="ques-card-list-two">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(1).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head"  th:text="${levelModel.list.get(1).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(1).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon002">2</span>
+                        </div>
+                    </li>
+                    <li class="ques-card-list-three">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/headpicture/'+${levelModel.list.get(2).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(2).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(2).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon003">3</span>
+                        </div>
+                    </li>
+                    <li class="ques-card-list-four">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(3).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(3).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(3).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon004">4</span>
+                        </div>
+                    </li>
+                    <li class="ques-card-list-five">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(4).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(4).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(4).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon005">5</span>
+                        </div>
+                    </li>
+                </div>
+                <div class="ques-list-right" style="background-color: white">
+                    <li class="ques-card-list-six">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(5).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(5).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(5).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon005">6</span>
+                        </div>
+                    </li>
+                    <li class="ques-card-list-seven">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(6).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(6).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(6).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon004">7</span>
+                        </div>
+                    </li>
+
+                    <li class="ques-card-list-eight">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(7).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(7).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(7).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon004">8</span>
+                        </div>
+                    </li>
+
+                    <li class="ques-card-list-nine">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(8).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(8).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(8).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon004">9</span>
+                        </div>
+                    </li>
+                    <li class="ques-card-list-ten">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img th:src="@{'/login/picture?name='+${levelModel.list.get(9).headpicture}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head" th:text="${levelModel.list.get(9).name}"></div>
+                                <div class="ques-list-name-text" th:text="'经验值: '+${levelModel.list.get(9).grade}"></div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon004">10</span>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

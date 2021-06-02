@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>每日推文</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/" >
+  -->
+
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="">
+  -->
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <!-- Icons -->
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/swipebox.min.css">
+  <link rel="stylesheet" href="/css/swiper.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+
+
+</head>
+  
+  <body>
+  <div id="toolbar" class="primary-color tool-login">
+    <div class="open-left"  >
+      <a href="/login/toIndex">
+        <i class="ion-log-out m-1 white-text"></i>
+      </a>
+    </div>
+  </div>
+  <br><br><br>
+    <!-- Main Container -->
+    <div id="main" class="main">
+
+
+
+      <!-- Page Contents -->
+      <div class="grey lighten-4 animated fadeinup">
+        
+        <div class="news-main animated fadein delay-1">
+          <img alt="" src="/img/33.gif">
+          <div class="opacity-overlay-gradient"></div>
+          <a href="event.html">
+            <div class="opacity-overlay-black">
+            </div>
+          </a>
+          
+          <div class="top-news animated fadeinright delay-1">    
+            <h4 class="top-news-title">
+              <a href="#" style="color:white;">觉得文章不错就推送过来吧!让大家都看见</a>
+            </h4>
+            <span class="top-news-channel" th:text="${recommendModel.nowtime}"></span> <span class="top-news-category">每日更新</span>
+            <div class="clr"></div>
+          </div>
+        </div>
+        
+        <div class="news">
+
+          <div th:each="articleUser:${recommendModel.articleUserList}" class="media-top-object animated fadeinright z-depth-1 delay-2">
+            <a th:href="'/blog/content/'+${articleUser.id}" class="media-left"><img th:src="@{'/login/cover?name='+${articleUser.cover}}" alt=""></a>
+            <div class="media-body">
+              <h4 class="news-title">
+                <a style="display:-webkit-box;-webkit-box-orient:vertical;word-break:break-all;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;" th:href="'/blog/content/'+${articleUser.id}" th:text="${articleUser.title}"></a>
+              </h4>
+              <p class="small" style="display:-webkit-box;-webkit-box-orient:vertical;word-break:break-all;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;" th:text="${articleUser.summarize}"></p>
+              <div class="card-feedback">
+                <div class="card-users">
+                  <i class="ion-ios-heart accent-text"></i> <span th:text="${articleUser.pageLikes}"></span>
+                  <i class="ion-android-person-add"></i> <span th:text="${articleUser.pageViews}"></span>
+                </div>
+                <div class="card-share" style="color: #2aabd2; font-weight: bold">
+                  <i class="ion-person"></i> <span th:text="'推送: '+${articleUser.userName}"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer primary-color">
+          <div class="section center">
+            <h2 class="heading white-text">无形之刃，IT致命</h2>
+            <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝.</p>
+            <div class="footer-icons">
+              <i class="ion-social-facebook m-10 white-text"></i>
+              <i class="ion-social-twitter m-10 white-text"></i>
+              <i class="ion-social-pinterest m-10 white-text"></i>
+              <i class="ion-social-instagram m-10 white-text"></i>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container center">
+              <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+            </div>
+          </div>
+        </footer>
+      
+      </div> 
+      <!-- End of Page Contents -->
+
+        
+    </div>
+    <!-- End of Main Container -->
+    
+    <!-- Scripts -->
+    <script src="/js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="/js/helper.js"></script>
+    <script src="/js/vendor/HeadsUp.js"></script>
+    <script src="/js/vendor/jquery.smoothState.js"></script>
+    <script src="/js/vendor/chart.min.js"></script>
+    <script src="/js/vendor/jquery.mixitup.min.js"></script>
+    <script src="/js/vendor/jquery.swipebox.min.js"></script>
+    <script src="/js/vendor/masonry.min.js"></script>
+    <script src="/js/vendor/swiper.min.js"></script>
+    <script src="/js/vendor/materialize.min.js"></script>
+  </body>
+</html>

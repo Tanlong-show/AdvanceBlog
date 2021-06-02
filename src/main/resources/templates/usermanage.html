@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>用户信息管理</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/" >
+  -->
+
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="">
+  -->
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <!-- Icons -->
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/swipebox.min.css">
+  <link rel="stylesheet" href="/css/swiper.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+</head>
+
+<body>
+
+<!-- Main Container -->
+<div id="main" class="main">
+
+  <!-- Toolbar -->
+  <div id="toolbar" class="primary-color tool-login">
+    <div class="open-left"  >
+      <a href="/login/toIndex">
+        <i class="ion-log-out m-1 white-text"></i>
+      </a>
+    </div>
+  </div>
+  <!-- End of Toolbar -->
+  <br>
+
+  <!-- Page Contents -->
+  <div class="page fullscreen bg-4 animated fadeinup">
+
+    <div class="opacity-overlay"></div>
+    <!-- Clock -->
+    <div class="clock center-align animated fadein delay-2">
+      <h2>用户管理</h2>
+      <span>请勿随意操作</span>
+    </div>
+
+    <!-- Search bar -->
+    <div class="p-20">
+      <nav>
+        <div class="nav-wrapper">
+          <form th:action="@{/index/usermanageto2}">
+            <div class="input-field">
+              <input id="search2" name="keyword" type="search" placeholder="Search..." required>
+              <label for="search2"><i class="ion-android-search black-text text-lighten-3"></i></label>
+              <i class="ion-android-close"></i>
+            </div>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+    <ul class="collection notify">
+      <li class="collection-item white z-depth-1 dismissable animated fadeinup delay-4" th:each="user:${usermodel.users}">
+        <div class="notify-header" style="padding-bottom: 20px;">
+          <img class="avatar circle" th:src="@{'/login/picture?name='+${user.headpicture}}" alt="">
+          <div class="notify-author">
+            <span><strong th:text="${user.name}"></strong></span>
+            <span class="truncate" th:text="${user.signature}"></span>
+            <span th:text="${user.speciality}" style="float: left;margin-right: 30px;color:darkorange"></span>
+            <span th:text="${user.sex}" style="color:darkturquoise"></span>
+          </div>
+          <a th:href="@{'/index/go/'+${user.id}}" style="float: right;color:darkred" class="change">修改</a>
+          <a th:href="@{#}" style="float: right;margin-right: 10px;color:darkred" class="change">删除</a>
+          <input type="hidden" th:value="${user.id}">
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+  <!-- End of Page Contents -->
+
+
+</div>
+<!-- End of Main Container -->
+
+<!-- Scripts -->
+<!-- Scripts -->
+<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="/js/helper.js"></script>
+<script src="/js/vendor/HeadsUp.js"></script>
+<script src="/js/vendor/jquery.smoothState.js"></script>
+<script src="/js/vendor/chart.min.js"></script>
+<script src="/js/vendor/jquery.mixitup.min.js"></script>
+<script src="/js/vendor/jquery.swipebox.min.js"></script>
+<script src="/js/vendor/masonry.min.js"></script>
+<script src="/js/vendor/swiper.min.js"></script>
+<script src="/js/vendor/materialize.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+  $(function () {
+    $(".change").click(function () {
+      var id = $(this).parent().children("input").eq(0).val();
+      $.ajax({
+        url:"/user/deleteuser",
+        data:{userId:id},
+        success:function (data) {
+        },
+        error:function () {
+        }
+      })
+      $(this).parent().parent().remove();
+    })
+  })
+</script>
+</body>
+</html>

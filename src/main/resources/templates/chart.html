@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>多图统计</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Main Container -->
+    <div id="main" class="main">
+
+      <!-- Toolbar -->
+      <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left"  >
+          <a href="/login/toIndex">
+            <i class="ion-log-out m-1 white-text"></i>
+          </a>
+        </div>
+      </div>
+      <!-- End of Toolbar -->
+      <br><br><br><br><br><hr>
+
+      <!-- Page Contents -->
+      <div class="page grey lighten-5 animated fadeinup">
+
+        <!-- Line chart -->
+        <div id="line_chart" class="card chart animated fadeinright">
+          <div class="legend">
+            <h5>流量条 <i class="ion-android-refresh right text-color"></i></h5>
+            <p><span class="data-color blue lighten-3"></span>评论流量</p>
+            <p><span class="data-color purple lighten-4"></span>前日对比数值</p>
+          </div>
+
+          <div class="lineChartCont">
+            <canvas id="canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div id="pie_chart" class="card chart animated fadeinright delay-1">
+          <div class="legend">
+            <h5>文章整体占比 <i class="ion-android-more-vertical right text-color"></i></h5>
+            <p><span class="data-color blue lighten-3"></span>JAVA</p>
+            <p><span class="data-color orange lighten-3"></span>C/C++</p>
+            <p><span class="data-color red lighten-4"></span>PYTHON</p>
+            <p><span class="data-color brown lighten-3"></span>PTA题集</p>
+            <p><span class="data-color green lighten-3"></span>硬件操作</p>
+            <p><span class="data-color yellow lighten-3"></span>LINUX</p>
+            <p><span class="data-color purple lighten-3"></span>HTML/CSS</p>
+            <p><span class="data-color pink lighten-3"></span>其它</p>
+
+          </div>
+
+          <div class="pieChartCont">
+            <canvas id="pieChart" width="300" height="300"></canvas>
+          </div>
+        </div>
+
+        <!-- Doughnut Chart -->
+        <div id="doughnut_chart" class="card chart animated fadeinright delay-2">
+          <div class="legend">
+            <h5>专业人数分布<i class="ion-android-refresh right text-color"></i></h5>
+            <p><span class="data-color blue lighten-4"></span>软件工程</p>
+            <p><span class="data-color red lighten-4"></span>计算机科学与技术</p>
+            <p><span class="data-color yellow lighten-4"></span>物联网工程</p>
+            <p><span class="data-color green lighten-4"></span>电子信息工程</p>
+            <p><span class="data-color purple lighten-4"></span>其它</p>
+
+          </div>
+
+          <div class="doughnutChartCont">
+            <canvas id="doughnutChart" width="300" height="300"></canvas>
+          </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div id="bar_chart" class="card chart animated fadeinright delay-3">
+          <div class="legend">
+            <h5>火力PK<i class="ion-android-share-alt right text-color"></i></h5>
+            <p><span class="data-color blue lighten-3"></span>被收藏</p>
+            <p><span class="data-color purple lighten-4"></span>被推文</p>
+          </div>
+
+          <div class="barChartCont">
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer primary-color">
+          <div class="section center">
+            <h2 class="heading white-text">加油</h2>
+            <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝</p>
+            <div class="footer-icons">
+              <i class="ion-social-facebook m-10 white-text"></i>
+              <i class="ion-social-twitter m-10 white-text"></i>
+              <i class="ion-social-pinterest m-10 white-text"></i>
+              <i class="ion-social-instagram m-10 white-text"></i>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container center">
+              <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- End of Page Contents -->
+
+
+    </div>
+    <!-- End of Main Container -->
+
+    <!-- Scripts -->
+    <script src="/js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="/js/helper.js"></script>
+    <script src="/js/vendor/HeadsUp.js"></script>
+    <script src="/js/vendor/jquery.smoothState.js"></script>
+    <script src="/js/vendor/chart.min.js"></script>
+    <script src="/js/vendor/jquery.mixitup.min.js"></script>
+    <script src="/js/vendor/jquery.swipebox.min.js"></script>
+    <script src="/js/vendor/masonry.min.js"></script>
+    <script src="/js/vendor/swiper.min.js"></script>
+    <script src="/js/vendor/materialize.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      // Charts
+      // LINE GRAPH
+      var c = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      function dateshow(){
+        $.ajax({
+          url: '/index/datelist',
+          type: "post",
+          async:false,
+          success: function (result) {
+            c[0] = result[0];
+            c[1] = result[1];
+            c[2] = result[2];
+            c[3] = result[3];
+            c[4] = result[4];
+
+          }})
+
+        $.ajax({
+          url: '/index/liuliang',
+          type: "post",
+          async:false,
+          success: function (result) {
+            c[5] = result[0];
+            c[6] = result[1];
+            c[7] = result[2];
+            c[8] = result[3];
+            c[9] = result[4];
+            c[10] = result[5];
+            c[11] = result[6];
+            c[12] = result[7];
+            c[13] = result[8];
+            c[14] = result[9];
+          }})
+        return c;
+      }
+
+      if(dateshow()) {
+        var lineChartData = {
+          labels: [c[4], c[3], c[2], c[1], c[0]],
+          datasets: [{
+            label: "My First dataset",
+            fillColor: "rgba(100, 181, 246, 0.5)",
+            strokeColor: "#90caf9",
+            pointColor: "transparent",
+            pointStrokeColor: "rgba(41, 128, 185, 0)",
+            pointHighlightFill: "rgba(41, 128, 185, 0.9)",
+            pointHighlightStroke: "rgba(41, 128, 185, 0)",
+            data: [c[5], c[7], c[9], c[11], c[13]]
+          }, {
+            label: "My Second dataset",
+            fillColor: "rgba(155, 89, 182, 0.5)",
+            strokeColor: "rgba(155, 89, 182, 0.6)",
+            pointColor: "rgba(155, 89, 182, 0.9)",
+            pointStrokeColor: "rgba(231, 76, 60, 255, 0)",
+            pointHighlightFill: "rgba(155, 89, 182, 0.9)",
+            pointHighlightStroke: "rgba(231, 76, 60, 0)",
+            data: [c[6], c[8], c[10], c[12], c[14]]
+          }]
+        }
+      }
+
+
+      var c = [0,0,0,0,0,0,0,0]
+      function catagory(){
+        $.ajax({
+          url: '/index/catagory',
+          type: "post",
+          async:false,
+          success: function (result) {
+            c[0] = result[0];
+            c[1] = result[1];
+            c[2] = result[2];
+            c[3] = result[3];
+            c[4] = result[4];
+            c[5] = result[5];
+            c[6] = result[6];
+            c[7] = result[7];
+          }})
+        return c;
+      }
+      if(catagory()) {
+        // PIE CHART
+        var pieData = [{
+          value: c[0],
+          color: "#BBDEFB",
+          highlight: "#29b6f6",
+          label: "JAVA"
+        }, {
+          value: c[1],
+          color: "#ffcc80",
+          highlight: "#ffa726",
+          label: "C/C++"
+        }, {
+          value: c[2],
+          color: "#ffaad5",
+          highlight: "#D9006C",
+          label: "PYTHON"
+        }, {
+          value: c[3],
+          color: "#5C3317",
+          highlight: "#5C4033",
+          label: "PTA题集"
+        }, {
+          value: c[4],
+          color: "#00FF00",
+          highlight: "#4A766E",
+          label: "硬件操作"
+        }, {
+          value: c[5],
+          color: "#fff9c4",
+          highlight: "#fff176",
+          label: "LINUX"
+        }, {
+          value: c[6],
+          color: "#e1bee7",
+          highlight: "#ba68c8",
+          label: "HTML/CSS"
+        }, {
+          value: c[7],
+          color: "#FF359A",
+          highlight: "#D9006C",
+          label: "其它"
+        }];
+      }
+
+      var a = [0,0,0,0,0]
+      function spec(){
+        $.ajax({
+          url: '/index/speciality',
+          type: "post",
+          async:false,
+          success: function (result) {
+            a[0] = result[0];
+            a[1] = result[1];
+            a[2] = result[2];
+            a[3] = result[3];
+            a[4] = result[4];
+
+          }})
+        return a;
+      }
+
+      if(spec()){
+        // Doughnut Chart
+        var doughnutData = [
+          {
+            value: a[0],
+            color: "#BBDEFB",
+            highlight: "#42a5f5",
+            label: "软件工程"
+          }, {
+            value: a[1],
+            color: "#EF9A9A",
+            highlight: "#ef5350",
+            label: "计算机科学与技术"
+          }, {
+            value: a[2],
+            color: "#fff9c4",
+            highlight: "#fff176",
+            label: "物联网工程"
+          }, {
+            value: a[3],
+            color: "#70DBDB",
+            highlight: "#00FF00",
+            label: "电子信息工程"
+          }, {
+            value: a[4],
+            color: "#DB70DB",
+            highlight: "#871F78",
+            label: "其它"
+          }
+        ];
+      }
+
+      // Bar Chart
+      var p = [0,0,0,0,0,0,0,0,0,0]
+      function pk(){
+        $.ajax({
+          url: '/index/pk',
+          type: "post",
+          async:false,
+          success: function (result) {
+            p[0] = result[0];
+            p[1] = result[1];
+            p[2] = result[2];
+            p[3] = result[3];
+            p[4] = result[4];
+            p[5] = result[5];
+            p[6] = result[6];
+            p[7] = result[7];
+            p[8] = result[8];
+            p[9] = result[9];
+          }})
+        return p;
+      }
+
+      if(pk()) {
+        var barChartData = {
+          labels: ["软件", "计算机", "物联网", "电子", "其它"],
+          datasets: [{
+            fillColor: "rgba(100, 181, 246, 0.5)",
+            strokeColor: "#90caf9",
+            highlightFill: "rgba(41, 128, 185, 0.9)",
+            highlightStroke: "rgba(41, 128, 185, 0)",
+            data: [p[0], p[1], p[2], p[3], p[4]]
+          }, {
+            fillColor: "rgba(155, 89, 182, 0.5)",
+            strokeColor: "rgba(155, 89, 182, 0.6)",
+            highlightFill: "rgba(155, 89, 182, 0.9)",
+            highlightStroke: "rgba(231, 76, 60, 0)",
+            data: [p[5], p[6], p[7], p[8], p[9]]
+          }]
+        }
+      }
+      var ctx = document.getElementById("canvas").getContext("2d");
+      window.myLine = new Chart(ctx).Line(lineChartData, {
+        responsive: true,
+      });
+      var ctx2 = document.getElementById("pieChart").getContext("2d");
+      window.myPie = new Chart(ctx2).Pie(pieData, {
+        animation: true,
+        responsive: true
+      });
+      var ctx3 = document.getElementById("barChart").getContext("2d");
+      window.myBar = new Chart(ctx3).Bar(barChartData, {
+        responsive: true
+      });
+      var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+      window.myPie = new Chart(ctx4).Doughnut(doughnutData, {
+        animation: true,
+        responsive: true
+      });
+    </script>
+  </body>
+</html>

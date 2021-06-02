@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好友推荐</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        html, body {
+            /*background: #FCEEB5;*/
+            font-family: Abel, Arial, Verdana, sans-serif;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+        }
+
+        .card {
+            width: 450px;
+            height: 250px;
+            background-color: #fff;
+            background: linear-gradient(#f8f8f8, #fff);
+            box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            margin: 1.5rem;
+        }
+
+            .card h1 {
+                text-align: center;
+            }
+
+            .card .additional {
+                position: absolute;
+                width: 150px;
+                height: 100%;
+                background: linear-gradient(#dE685E, #EE786E);
+                transition: width 0.4s;
+                overflow: hidden;
+                z-index: 2;
+            }
+
+            .card.green .additional {
+                background: linear-gradient(#92bCa6, #A2CCB6);
+            }
+
+
+            .card:hover .additional {
+                width: 100%;
+                border-radius: 0 5px 5px 0;
+            }
+
+            .card .additional .user-card {
+                width: 150px;
+                height: 100%;
+                position: relative;
+                float: left;
+            }
+
+                .card .additional .user-card::after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 10%;
+                    right: -2px;
+                    height: 80%;
+                    border-left: 2px solid rgba(0,0,0,0.025);
+
+                }
+
+                .card .additional .user-card .level,
+                .card .additional .user-card .points {
+                    top: 15%;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-size: 0.75em;
+                    font-weight: bold;
+                    background: rgba(0,0,0,0.15);
+                    padding: 0.125rem 0.75rem;
+                    border-radius: 100px;
+                    white-space: nowrap;
+                }
+
+                .card .additional .user-card .points {
+                    top: 85%;
+                }
+
+                .card .additional .user-card svg {
+                    top: 50%;
+                }
+
+            .card .additional .more-info {
+                width: 300px;
+                float: left;
+                position: absolute;
+                left: 150px;
+                height: 100%;
+            }
+
+                .card .additional .more-info h1 {
+                    color: #fff;
+                    margin-bottom: 0;
+                }
+
+            .card.green .additional .more-info h1 {
+                color: #224C36;
+            }
+
+            .card .additional .coords {
+                margin: 0 1rem;
+                color: #fff;
+                font-size: 1rem;
+            }
+
+            .card.green .additional .coords {
+                color: #325C46;
+            }
+
+            .card .additional .coords span + span {
+                float: right;
+            }
+
+            .card .additional .stats {
+                font-size: 2rem;
+                display: flex;
+                position: absolute;
+                bottom: 1rem;
+                left: 1rem;
+                right: 1rem;
+                top: auto;
+                color: #fff;
+            }
+
+            .card.green .additional .stats {
+                color: #325C46;
+            }
+
+            .card .additional .stats > div {
+                flex: 1;
+                text-align: center;
+            }
+
+            .card .additional .stats i {
+                display: block;
+            }
+
+            .card .additional .stats div.title {
+                font-size: 0.75rem;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .card .additional .stats div.value {
+                font-size: 1.5rem;
+                font-weight: bold;
+                line-height: 1.5rem;
+            }
+
+                .card .additional .stats div.value.infinity {
+                    font-size: 2.5rem;
+                }
+
+            .card .general {
+                width: 300px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 1;
+                box-sizing: border-box;
+                padding: 1rem;
+                padding-top: 0;
+            }
+
+                .card .general .more {
+                    position: absolute;
+                    bottom: 1rem;
+                    right: 1rem;
+                    font-size: 0.9em;
+                }
+    </style>
+
+ <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/main2.css">
+
+    <style>
+        body{
+            background: url("/images/bbb.gif");
+            /*background-size:100% 100%;*/
+            background-attachment:fixed;
+        }
+    </style>
+</head>
+<body>
+<div id="toolbar" class="primary-color tool-login">
+    <div class="open-left"  >
+        <a href="/login/toIndex">
+            <i class="ion-log-out m-1 white-text"></i>
+        </a>
+    </div>
+</div>
+<br><br><br>
+<a href="/action/ciyun" style="float: left; margin-left: 50px;font-weight: bolder;color: greenyellow">词云图生成<img src="/images/yunduo.png"></a>
+<a href="/action/relici" style="float: right; margin-right: 50px;font-weight: bolder;color: red">热力词统计<img src="/images/reci.png"></a>
+
+    <div class="center">
+
+        <div class="card">
+            <div class="additional">
+                <div class="user-card">
+                    <div class="level center" th:text="'LEVEL - '+${ceshiModel.user1.grade}/10000">
+                    </div>
+                    <div class="points center" th:text="${ceshiModel.user1.grade}+' , Points'">
+                    </div>
+                    <svg width="110" height="110" viewBox="0 0 250 250"  role="img" aria-labelledby="title desc" class="center">
+                        <img th:src="@{'/login/picture?name='+${ceshiModel.user1.headpicture}}">
+                    </svg>
+                </div>
+                <div class="more-info">
+                    <h1 th:text="${ceshiModel.user1.name}"></h1>
+                    <div class="coords">
+                        <span>个性签名</span>
+                        <span th:text="${ceshiModel.user1.signature}"></span>
+                    </div>
+                    <div class="coords">
+                        <span>学号</span>
+                        <span th:text="${ceshiModel.user1.userId}"></span>
+                    </div>
+                    <div class="stats">
+                        <div>
+                            <div class="title">获赞数</div>
+                            <i class="ion-ios-heart"></i>
+                            <div class="value" th:text="${ceshiModel.user1.goodtimes}"></div>
+                        </div>
+                        <div>
+                            <div class="title">专业</div>
+                            <i class="ion-social-wordpress"></i>
+                            <div class="value" th:text="${ceshiModel.user1.speciality}"></div>
+                        </div>
+                        <div>
+                            <a th:href="@{'/user/add/'+${ceshiModel.user1.id}}">
+                            <div class="title">加好友</div>
+                            <i class="ion-person-add"></i>
+                            <div class="value">点击</div>
+                            </a>
+                        </div>
+                        <div>
+                            <div class="title">推荐指数</div>
+                            <i class="ion-thumbsup"></i>
+                            <div class="value infinity" style="width: 90px;" th:text="${ceshiModel.similar1}">暂无</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="general">
+                <h1 th:text="${ceshiModel.user1.name}"></h1>
+                <p style="font-weight: bold" th:text="'兴趣相似度分析：'+${ceshiModel.similar1}">暂无</p>
+
+                <span th:each="tag : ${ceshiModel.tag1}">
+                <p style="font-weight: bold;color: red; border-radius: 30%;mso-font-width:70%;height: 25px;background-color: #26c6da;padding-left: 12px;" th:text="${tag}">暂无</p>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="card green">
+            <div class="additional">
+                <div class="user-card">
+                    <div class="level center" th:text="'LEVEL - '+${ceshiModel.user2.grade}/10000">
+                    </div>
+                    <div class="points center" th:text="${ceshiModel.user2.grade}+' , Points'">
+                    </div>
+                    <svg width="110" height="110" viewBox="0 0 250 250"  role="img" aria-labelledby="title desc" class="center">
+                        <img th:src="@{'/login/picture?name='+${ceshiModel.user2.headpicture}}">
+                    </svg>
+                </div>
+                <div class="more-info">
+                    <h1 th:text="${ceshiModel.user2.name}"></h1>
+                    <div class="coords">
+                        <span>个性签名</span>
+                        <span th:text="${ceshiModel.user2.signature}"></span>
+                    </div>
+                    <div class="coords">
+                        <span>学号</span>
+                        <span th:text="${ceshiModel.user2.userId}"></span>
+                    </div>
+                    <div class="stats">
+                        <div>
+                            <div class="title">获赞数</div>
+                            <i class="ion-ios-heart"></i>
+                            <div class="value" th:text="${ceshiModel.user2.goodtimes}"></div>
+                        </div>
+                        <div>
+                            <div class="title">专业</div>
+                            <i class="ion-social-wordpress"></i>
+                            <div class="value" th:text="${ceshiModel.user2.speciality}"></div>
+                        </div>
+                        <div>
+                            <a th:href="@{'/user/add/'+${ceshiModel.user2.id}}">
+                                <div class="title">加好友</div>
+                                <i class="ion-person-add"></i>
+                                <div class="value">点击</div>
+                            </a>
+                        </div>
+                        <div>
+                            <div class="title">推荐指数</div>
+                            <i class="ion-thumbsup"></i>
+                            <div class="value infinity" style="width: 90px;" th:text="${ceshiModel.similar2}">暂无</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="general">
+                <h1 th:text="${ceshiModel.user2.name}"></h1>
+                <p style="font-weight: bold;" th:text="'兴趣相似度分析：'+${ceshiModel.similar2}">暂无</p>
+
+                <span th:each="tag : ${ceshiModel.tag2}">
+                <p style="font-weight: bold;color: red; border-radius: 30%;height: 25px;mso-font-width:70%;background-color: #26c6da;padding-left: 12px;" th:text="${tag}">暂无</p>
+                </span>
+
+            </div>
+        </div>
+
+        <a style="color:salmon;margin-left: 400px;font-weight: bolder;" href="/action/recomendfriend"><i style="margin-top: 10px;color: salmon;" class="ion-refresh"></i>换一换</a>
+
+    </div>
+
+</body>
+</html>

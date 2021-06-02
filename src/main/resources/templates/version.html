@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>版本介绍</title>
+    <link rel="stylesheet" href="/css/card.css"/>
+    <!-- Icons -->
+    <!-- Stylesheets -->
+
+  </head>
+  <body>
+  <div>
+    <a href="/login/toIndex" style="box-shadow: -1rem 0 3rem whitesmoke;border: 3px solid skyblue;margin-left:10px;background-color: #26c6da;color:wheat;font-size: 1.2rem;border-radius: 10%;">
+      返回主页
+    </a>
+  </div><br>
+  <a href="#" style="box-shadow: -1rem 0 3rem whitesmoke;margin-left:10px;border: 3px solid black;background-color: black;color:wheat;font-size: 1.2rem;border-radius: 10%;">
+    左滑查看版本介绍
+  </a>
+ <section class="card-list">
+   <div th:each="version : ${versionModel.versionList}">
+
+   <article class="card">
+        <header class="card-header">
+          <p th:text="${version.time}"></p>
+          <h2 th:text="${version.content}"></h2>
+        </header>
+
+        <div class="card-author">
+          <a class="author-avatar" href="#">
+            <img src="/headpicture/tl.jpg" />
+          </a>
+          <svg class="half-circle" viewBox="0 0 106 57">
+            <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+          </svg>
+
+          <div class="author-name">
+            <div class="author-name-prefix">管理员</div>
+            谭龙
+          </div>
+        </div>
+        <div class="tags">
+          <a href="#" th:text="${version.title}"></a>
+        </div>
+      </article>
+   </div>
+
+      
+
+ </section>
+  </body>
+</html>

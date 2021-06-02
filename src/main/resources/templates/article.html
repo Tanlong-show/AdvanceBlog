@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>查看博文</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <!--  评论+表情-->
+<!--    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+  <!--  <link rel="stylesheet" href="/css/reset.css">-->
+  <style>
+    .comment { width: 96%; height:200px;margin: 20px auto; position: relative; background: seashell; padding: 10px 20px 20px; border: 3px solid #DDD; border-radius: 5px; }
+    .comment h3 { height: 58px; line-height: 58px }
+    .com_form { width: 100%; height:90%; position: relative }
+    .input { width: 99%; height: 100px; border: 1px solid #ccc }
+    .com_form p { height: 35px; line-height: 35px; position: relative; margin-top: 10px; }
+    img.emotion { width: 29px; height: 29px; cursor: pointer }
+    img.emotion:hover { background-position: 2px -28px }
+    .qqFace { margin-top: 4px; background: #fff; padding: 2px; border: 1px #dfe6f6 solid; }
+    .qqFace table td { padding: 0px; }
+    .qqFace table td img { cursor: pointer; border: 1px #fff solid; }
+    .qqFace table td img:hover { border: 1px #0066cc solid; }
+    .sub_btn { position: absolute; right: 0px; top: 0; display: inline-block; zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */  *display: inline;
+      vertical-align: baseline; margin: 0 2px; outline: none; cursor: pointer; text-align: center; font: 14px/100% Arial, Helvetica, sans-serif; padding: .5em 2em .55em; text-shadow: 0 1px 1px rgba(0,0,0,.6); -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2); box-shadow: 0 1px 2px rgba(0,0,0,.2); color: #e8f0de; border: solid 1px #538312; background: #64991e; background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e)); background: -moz-linear-gradient(top, #7db72f, #4e7d0e);  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+    }
+    .sub_btn:hover { background: #538018; background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c)); background: -moz-linear-gradient(top, #6b9d28, #436b0c);  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+    }
+
+    .sub_btn2 { position: absolute; right: 100px; top: 0; display: inline-block; zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */  *display: inline;
+      vertical-align: baseline; margin: 0 2px; outline: none; cursor: pointer; text-align: center; font: 14px/100% Arial, Helvetica, sans-serif; padding: .5em 2em .55em; text-shadow: 0 1px 1px rgba(0,0,0,.6); -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2); box-shadow: 0 1px 2px rgba(0,0,0,.2); color: #e8f0de; border: solid 1px #538312; background: #64991e; background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e)); background: -moz-linear-gradient(top, #7db72f, #4e7d0e);  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+    }
+    .sub_btn2:hover { background: #538018; background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c)); background: -moz-linear-gradient(top, #6b9d28, #436b0c);  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+    }
+  </style>
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/" >
+  -->
+
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="">
+  -->
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <!-- Icons -->
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/swipebox.min.css">
+  <link rel="stylesheet" href="/css/swiper.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+
+
+</head>
+
+<body>
+
+<!-- Main Container -->
+<div id="main" class="main">
+
+  <!-- Toolbar -->
+  <div id="toolbar" class="primary-color tool-login">
+    <div class="open-left"  >
+      <a href="/index/otherblog">
+        <i class="ion-log-out m-1 white-text"></i>
+      </a>
+    </div>
+  </div>
+  <!-- End of Toolbar -->
+
+  <!-- Page Contents -->
+  <div class="animated fadeinup">
+
+    <!-- Hero Header -->
+    <div class="hero-material animated fadeindown">
+      <div class="parallax primary-color">
+
+        <div class="fixed-action-btn floating-button animated bouncein delay-3 horizontal click-to-toggle">
+          <a href="#!" class="btn-floating btn-large accent-color">
+            <i class="ion-more"></i>
+          </a>
+          <ul>
+            <li id = "recommendfather"><div id="recommend" class="btn-floating blue darken-4"><i class="ion-social-snapchat"></i></div></li>
+
+            <nobr id="collectgrandfather">
+              <nobr th:if="${articleModel.action} eq 1">
+                <li id = "collectfather"><div id="collect" class="btn-floating light-blue"><i class="ion-ios-star accent-text"></i></div></li>
+              </nobr>
+              <nobr th:if="${articleModel.action} eq 0">
+                <li id = "collectfather2"><div id="collect2" class="btn-floating light-blue"><i class="ion-ios-star"></i></div></li>
+              </nobr>
+            </nobr>
+
+            <li id = "lookfather"><div id="look" class="btn-floating pink"><i class="ion-ios-eye"></i></div></li>
+            <li id = "likefather"><div id="like" class="btn-floating red darken-1"><i class="ion-ios-heart"></i></div></li>
+          </ul>
+        </div>
+        <div class="banner-title" th:text="${articleModel.article.title}"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Article Content -->
+  <div class="animated fadeinup delay-1">
+    <div class="p-20">
+      <p><span style="font-weight: bolder;font-size: 16px;color: #2aabd2">觉得不错的话,点击右边三个点,一键四连哦!(Ps:收藏可以取消)</span>
+
+    </div>
+  </div>
+  <br>
+  <!-- Slider -->
+  <div class="swiper-container swiper-slider m-20">
+    <div class="swiper-wrapper">
+        <span class="swiper-slide">
+
+          <input type="hidden" id="articleId" th:value="${articleModel.article.id}"/>
+
+
+          <span class="tl" th:utext="${articleModel.article.content}"></span>
+
+          <img  style="width: 100%;" th:src="@{'/login/cover?name='+${articleModel.article.cover}}"/></span>
+    </div>
+    <br>
+    <span style="font-weight: bolder;color: coral;float: right;margin-right: 15px;" >
+            <div th:if="${articleModel.user.id} eq ${articleModel.article.userId}">
+                <a th:href="@{'/blog/toto/'+${articleModel.article.id}}" style="margin-right: 30px;">修改此文章</a>
+                <a th:href="@{'/blog/deleteArticle/'+${articleModel.article.id}}">删除文章</a>
+            </div>
+
+            <div th:if="${articleModel.user.id} ne ${articleModel.article.userId}">
+                作者: <nobr style="margin-right: 10px;" th:text="${articleModel.writer.name}"></nobr>
+                发布时间: <nobr th:text="${articleModel.article.articleDate}"></nobr>
+            </div>
+    </span>
+  </div>
+
+  <!-- Share -->
+  <!--        <div class="p-20 center-align">-->
+  <!--          <h5>Share it!</h5>-->
+  <!--          <i class="ion-social-facebook p-20 blue-text text-darken-4"></i>-->
+  <!--          <i class="ion-social-twitter p-20 blue-text"></i>-->
+  <!--          <i class="ion-social-pinterest p-20 red-text"></i>-->
+  <div class="card-feedback">
+    <div class="card-users">
+      <i class="ion-ios-heart accent-text"></i> <div id="lovefather"><span id="love" th:value="${articleModel.article.pageLikes}" th:text="${articleModel.article.pageLikes}"></span></div>
+      <i class="ion-chatbubble-working"></i> <div id="commentNumberfather"><span id = "commentNumber" th:value="${articleModel.article.comments}" th:text="${articleModel.article.comments}"></span></div>
+      <i class="ion-person-add"></i> <div id="seefather"><span id="see" th:value="${articleModel.article.pageViews}" th:text="${articleModel.article.pageViews}"></span></div>
+    </div>
+  </div>
+  <!-- Comments -->
+  <div class="comments grey lighten-4">
+<!--    评论人信息-->
+    <input type="hidden" id="username" th:value="${articleModel.user.name}">
+    <input type="hidden" id="userhead" th:value="@{'/login/picture?name='+${articleModel.user.headpicture}}">
+
+
+    <div id="commentNumber2father"><h5 id = "commentNumber2" th:text="${articleModel.article.comments}+评论"></h5></div>
+
+    <div id="tshow">
+      <input type="hidden" id="size2" th:value="${articleModel.size}"/>
+      <div th:each="commentuser:${articleModel.commentuser}" class="media-top-object animated fadeinright delay-1" th:id="${commentuserStat.index}+100000">
+        <!--               评论id-->
+        <input type="hidden" th:id="${commentuserStat.index}+3000" th:value="${commentuser.id}">
+        <img th:src="@{'/login/picture?name='+${commentuser.headpicture}}" alt="" class="media-left avatar">
+        <div class="media-body">
+          <input type="hidden" th:id="${commentuserStat.index}+200" th:value="${commentuser.userId}">
+
+          <span th:text="${commentuser.userName}"></span>
+
+<!--          如果是自己，则可以删除评论-->
+          <nobr  th:if="${commentuser.userName} eq ${articleModel.user.name}">
+            <div th:id="${commentuserStat.index}" th:value="${commentuser.id}" style="float: right;font-size: 15px;color: #2aabd2;font-weight: bold;">删除</div>
+
+            <span class="small" th:utext="${commentuser.content}"></span>
+            <span class="small" th:text="${commentuser.commentDate}"></span>
+<!--            加载回复评论-->
+            <nobr th:each="answer:${articleModel.answerList}" class="media-top-object animated fadeinright delay-3">
+              <nobr  th:if="${answer.userId} eq ${commentuser.userId} and ${answer.articleId} eq ${articleModel.article.id} and ${answer.commentId} eq ${commentuser.id}">
+
+                <div class="media-top-object animated fadeinright delay-3">
+                <img alt="" style="width: 26px;height: 26px;margin-top: 25px;" th:src="@{'/login/picture?name='+${answer.headpicture}}" class="media-left avatar">
+                      <div class="media-body">
+                          <span style="font-size: 13px;margin-top: 22px;" th:text="${answer.name}"></span>
+                        <span class="small" th:utext="${answer.content}"></span>
+                          <span class="small" th:text="${answer.time}"></span>
+                      </div>
+                </div>
+
+              </nobr>
+            </nobr>
+
+          </nobr>
+
+          <nobr  th:if="${commentuser.userName} ne ${articleModel.user.name}">
+            <div th:id="${commentuserStat.index}+1000" th:value="${commentuser.id}" style="float: right;font-size: 15px;color: #2aabd2;font-weight: bold;">回复</div>
+            <span class="small" th:utext="${commentuser.content}"></span>
+
+            <span class="small" th:text="${commentuser.commentDate}"></span>
+            <!--            加载回复评论-->
+            <nobr th:each="answer:${articleModel.answerList}" class="media-top-object animated fadeinright delay-3">
+              <nobr th:if="${answer.userId} eq ${commentuser.userId} and ${answer.articleId} eq ${articleModel.article.id} and ${answer.commentId} eq ${commentuser.id}">
+
+                <div class="media-top-object animated fadeinright delay-3">
+                  <img alt="" style="width: 26px;height: 26px;margin-top: 25px;" th:src="@{'/login/picture?name='+${answer.headpicture}}" class="media-left avatar">
+                  <div class="media-body">
+                    <span style="font-size: 13px;margin-top: 22px;" th:text="${answer.name}"></span>
+                    <span class="small" th:utext="${answer.content}"></span>
+                    <span class="small" th:text="${answer.time}"></span>
+                  </div>
+                </div>
+
+              </nobr>
+            </nobr>
+          </nobr>
+
+
+          <nobr th:id="${commentuserStat.index}+500"></nobr>
+
+        </div>
+      </div>
+    </div>
+
+
+<br><br><br>
+
+    <!--      评论框-->
+<!--    <div id="show" style="height: 200px;"></div>-->
+    <div class="comment">
+      <div class="com_form">
+        <textarea class="input" id="saytext" name="saytext"></textarea>
+        <p>
+          <input type="button" class="sub_btn" id="sub_btn" value="提交">
+          <img class="emotion" src="/arclist/p.png">
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="page-footer primary-color">
+    <div class="section center">
+      <h2 class="heading white-text">加油</h2>
+      <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝</p>
+      <div class="footer-icons">
+        <i class="ion-social-facebook m-10 white-text"></i>
+        <i class="ion-social-twitter m-10 white-text"></i>
+        <i class="ion-social-pinterest m-10 white-text"></i>
+        <i class="ion-social-instagram m-10 white-text"></i>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+        <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+      </div>
+    </div>
+  </footer>
+</div>
+<!-- End of Page Contents -->
+
+</div>
+<!-- End of Main Container -->
+
+<!-- Scripts -->
+<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="/js/helper.js"></script>
+<script src="/js/vendor/HeadsUp.js"></script>
+<script src="/js/vendor/jquery.smoothState.js"></script>
+<script src="/js/vendor/chart.min.js"></script>
+<script src="/js/vendor/jquery.mixitup.min.js"></script>
+<script src="/js/vendor/jquery.swipebox.min.js"></script>
+<script src="/js/vendor/masonry.min.js"></script>
+<script src="/js/vendor/swiper.min.js"></script>
+<script src="/js/vendor/materialize.min.js"></script>
+<!--<script src="/js/main.js"></script>-->
+<!--评论+表情js-->
+<script type="text/javascript" src="/js/jquery.qqFace.js"></script>
+<script type="text/javascript">
+  //删评论
+  var size2 = document.getElementById("size2").valueOf();
+  var size = size2.value;
+  for(let i = 0 ; i < size;i++){
+    $("#"+i).click(function () {
+              var p = document.getElementById(i).valueOf();
+              // 因为p对应div标签，要获取value必须用getattribute函数
+              var b = p.getAttribute("value");
+              document.getElementById(i+100000).innerHTML = "";
+              //发送请求
+              $.ajax({
+                url: '/action/delete/' + b,
+                type: "post",
+
+              })
+              //评论数-1显示
+              var a = document.getElementById("commentNumber").getAttribute("value")
+              var commentNumber = parseInt(a)-1;
+              $("#commentNumber").remove();
+              var str = '<span id = "commentNumber" value="'+commentNumber+'">'+commentNumber+'</span>'
+              $("#commentNumberfather").append(str);
+              //2
+              str = '<h5 id = "commentNumber2">'+commentNumber+'评论</h5>'
+              $("#commentNumber2").remove();
+              $("#commentNumber2father").append(str);
+            }
+    )
+  }
+
+  //回复
+  var r;
+  var c;
+  for(let i = 1000; i < size+1000; i++){
+    $("#"+i).click(function () {
+      var str =   '        <div class="comment" id="6000" style="float: left; width: 98%;height: 170px">\n' +
+              '            <div class="com_form">\n' +
+              '                <textarea class="input" id="saytext2" name="saytext2"></textarea>\n' +
+              '                <p>\n' +
+              '                    <input type="button" class="sub_btn" id="sub_btn2" value="回复">\n' +
+              '                    <img class="emotion" src="/arclist/p.png">\n' +
+              '                    <input type="button" class="sub_btn2" id="6001" value="取消">\n' +
+
+              '                </p>\n' +
+              '            </div>\n' +
+              '        </div>'
+      c = i-500;
+      $("#"+c).append(str);
+      //动态绑定新生成的回复按钮/取消
+      $("#"+c).on("click","#"+6001,function(){
+        // $("#"+6000).hide("slow");
+        $("#"+6000).remove();
+        document.getElementById('#saytext2').value = "";
+
+      });
+      //表情
+      $("#"+c).on("click",".emotion",function(){
+        $('.emotion').qqFace({
+
+          id: 'facebox',
+
+          assign: 'saytext2',
+
+          path: '/arclist/'	//表情存放的路径
+
+        });
+      });
+      //回复按钮
+      $("#"+c).on("click","#sub_btn2",function(){
+        var str=$('#saytext2').val();
+        str = replace_em(str);
+        var userhead = $("#userhead").val();
+        var username = $("#username").val();
+        var date = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+        //准备展示替换的评论
+
+        var longstr = '<div class="media-top-object animated fadeinright delay-4">' +
+                '<img alt="" style="width: 26px;height: 26px;margin-top: 25px;" src="' + userhead + '" class="media-left avatar">\n' +
+                '      <div class="media-body">\n' +
+                '        <span style="font-size: 13px;margin-top: 22px;">' + username + '</span>\n' +
+                '        <span class="small">' + str + '</span>\n' +
+                '        <span class="small">' + date + '</span>\n' +
+                '      </div>\n' + '</div>'
+        $("#"+6000).remove();
+        $("#"+c).append(longstr);
+        //发送请求
+        var articleId = $("#articleId").val();
+        var k = i-800;
+        var userId = $("#"+k).val();
+        var h = i+2000;
+        var commentId = $("#"+h).val();
+        $.ajax({
+          url: '/action/answer?articleId='+articleId+'&time='+date+'&userId='+userId+'&content='+str+'&commentId='+commentId,
+          type: "post",
+          success: function(data){
+
+          }});
+
+      });
+
+
+    })
+  }
+
+
+
+  //时间转换
+  Date.prototype.Format = function (fmt) {
+    var o = {
+      "M+": this.getMonth() + 1, //月份
+      "d+": this.getDate(), //日
+      "h+": this.getHours(), //小时
+      "m+": this.getMinutes(), //分
+      "s+": this.getSeconds(), //秒
+      "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+      "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt))
+      fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o) {
+      if (new RegExp("(" + k + ")").test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      }
+    }
+    return fmt;
+  }
+  // $(function() {
+
+    $('.emotion').qqFace({
+
+      id: 'facebox',
+
+      assign: 'saytext',
+
+      path: '/arclist/'	//表情存放的路径
+
+    });
+
+    $(".sub_btn").click(function () {
+      //所有的评论内容
+      var str = $("#saytext").val();
+      str = replace_em(str);
+
+      var userhead = $("#userhead").val();
+      var username = $("#username").val();
+      var date = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+      //准备展示替换的评论
+
+      var longstr = '<div class="media-top-object animated fadeinright delay-4">' +
+              '<img alt="" src="' + userhead + '" class="media-left avatar">\n' +
+              '      <div class="media-body">\n' +
+              '        <span>' + username + '</span>\n' +
+              '        <span class="small">' + str + '</span>\n' +
+              '        <span class="small">' + date + '</span>\n' +
+              '      </div>\n' + '</div>'
+
+      document.getElementById('saytext').value = "";
+      $("#tshow").append(longstr);
+
+
+
+        var articleId = $("#articleId").val();
+        $.ajax({
+          url: '/blog/savesay?content=' + str + '&articleId='+articleId+'&date='+date,
+
+      });
+
+      //评论数+1显示
+      var a = document.getElementById("commentNumber").getAttribute("value")
+      var commentNumber = parseInt(a)+1;
+      $("#commentNumber").remove();
+      var str = '<span id = "commentNumber" value="'+commentNumber+'">'+commentNumber+'</span>'
+      $("#commentNumberfather").append(str);
+      //2
+      str = '<h5 id = "commentNumber2">'+commentNumber+'评论</h5>'
+      $("#commentNumber2").remove();
+      $("#commentNumber2father").append(str);
+    });
+
+  //查看结果
+
+  function replace_em(str){
+
+    str = str.replace(/\</g,'&lt;');
+
+    str = str.replace(/\>/g,'&gt;');
+
+    str = str.replace(/\n/g,'<br/>');
+
+    str = str.replace(/\[em_([0-9]*)\]/g,'<img style="overflow:hidden;" src="/arclist/$1.gif" border="0" />');
+
+    return str;
+
+  }
+
+  $("#look").click(function () {
+    //浏览人数显示+1
+    var a = document.getElementById("see").getAttribute("value")
+    var seeNumber = parseInt(a)+1;
+    $("#see").remove();
+    var str = '<span id = "see" value="'+seeNumber+'">'+seeNumber+'</span>'
+    $("#seefather").append(str);
+
+    //图标变动及数据库操作
+    var str = '<div id="look" class="btn-floating pink"><i class="ion-ios-eye accent-text"></i></div>'
+    $("#look").remove();
+    $("#lookfather").append(str);
+    var articleId = $("#articleId").val()
+    $.ajax({
+    url:'/action/addlook?articleId='+articleId,
+    })
+  })
+
+  $("#recommend").click(function () {
+    //推文
+    //图标变动及数据库操作
+    var str = '  <div id="recommend" class="btn-floating blue darken-4"><i class="ion-social-snapchat accent-text"></i></div>\n'
+    $("#recommend").remove();
+    $("#recommendfather").append(str);
+    var articleId = $("#articleId").val()
+    $.ajax({
+      url:'/action/addrecommend?articleId='+articleId,
+    })
+  })
+
+
+
+  $("#like").click(function () {
+    //浏览人数显示+1
+    var a = document.getElementById("love").getAttribute("value")
+    var loveNumber = parseInt(a)+1;
+    $("#love").remove();
+    var str = '<span id = "love" value="'+loveNumber+'">'+loveNumber+'</span>'
+    $("#lovefather").append(str);
+
+    //图标变动及数据库操作
+    var str = '<div id="like" class="btn-floating red darken-1"><i class="ion-ios-heart accent-text"></i></div>'
+    $("#like").remove();
+    $("#likefather").append(str);
+    var articleId = $("#articleId").val()
+    $.ajax({
+      url:'/action/addlike?articleId='+articleId,
+    })
+  })
+
+  //收藏操作
+  $("#collect").click(function () {
+    //图标先变换,最开始是添加的，现在要取消删除
+    var str = '<li id = "collectfather2"><div id="collect2" class="btn-floating light-blue"><i class="ion-ios-star"></i></div></li>\n'
+    $("#collectfather").remove();
+    $("#collectgrandfather").append(str);
+    var articleId = $("#articleId").val()
+    var date = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+
+    $.ajax({
+      url:'/action/collect?articleId='+articleId+'&action='+0+'&date='+date,
+    })
+
+  })
+  $("#collect2").click(function () {
+    //图标先变换,最开始是没有的，现在要添加收藏
+    var str = '<li id = "collectfather"><div id="collect" class="btn-floating light-blue"><i class="ion-ios-star accent-text"></i></div></li>\n'
+
+    $("#collectfather2").remove();
+    $("#collectgrandfather").append(str);
+    var articleId = $("#articleId").val()
+    var date = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+
+    $.ajax({
+      url:'/action/collect?articleId='+articleId+'&action='+1+'&date='+date,
+    })
+
+  })
+
+  //动态绑定新生成的按钮
+  $("#collectgrandfather").on("click","#collect",function(){
+    //图标先变换,最开始是添加的，现在要取消删除
+    var str = '<li id = "collectfather2"><div id="collect2" class="btn-floating light-blue"><i class="ion-ios-star"></i></div></li>\n'
+    $("#collectfather").remove();
+    $("#collectgrandfather").append(str);
+    var articleId = $("#articleId").val()
+    var date = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+
+    $.ajax({
+      url:'/action/collect?articleId='+articleId+'&action='+0+'&date='+date,
+    })
+  })
+  //动态绑定新生成的按钮
+  $("#collectgrandfather").on("click","#collect2",function() {
+    //图标先变换,最开始是没有的，现在要添加收藏
+    var str = '<li id = "collectfather"><div id="collect" class="btn-floating light-blue"><i class="ion-ios-star accent-text"></i></div></li>\n'
+
+    $("#collectfather2").remove();
+    $("#collectgrandfather").append(str);
+    var articleId = $("#articleId").val()
+    var date = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+
+    $.ajax({
+      url:'/action/collect?articleId='+articleId+'&action='+1+'&date='+date,
+    })
+
+  })
+
+
+
+
+</script>
+
+</body>
+</html>

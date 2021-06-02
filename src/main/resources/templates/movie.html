@@ -1,0 +1,559 @@
+﻿<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="theme-color" content="#e90101"/>
+<title>ShowTime时间到</title>
+<meta name="author" content="Themezinho">
+<meta name="description" content="For all kind of video streaming website">
+<meta name="keywords" content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+     
+<!-- FAVICON FILES -->
+<link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+<link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+<link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+<link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+<link href="ico/favicon.png" rel="shortcut icon">
+
+<!-- CSS FILES -->
+  <link rel="stylesheet" href="/css/lineicons.css">
+  <link rel="stylesheet" href="/css/fancybox.min.css">
+  <link rel="stylesheet" href="/css/swiper3.min.css">
+  <link rel="stylesheet" href="/css/bootstrap3.min.css">
+  <link rel="stylesheet" href="/css/style3.css">
+</head>
+<body>
+	<nav class="mobile-menu">
+		<div class="inner">
+		<div class="mobile-search">
+		<h6>搜索视频名称</h6>
+          <form action="/movie/findmovie">
+            <input type="text" placeholder="JAVA基础语法视频" name="keyword">
+            <input type="submit" value="查找">
+          </form>
+		</div>
+		<!-- end mobile-search -->
+          <a href="#" class="button-account"><i class="lni lni-user"></i> <nobr th:text="${movieModel.user.name}"></nobr> </a>
+    <!-- end button-account --> 
+	<div class="site-menu">
+    <ul>
+      <li><a href="/login/toIndex">返回主页</a></li>
+    </ul>
+  </div>
+  <!-- end site-menu -->
+			</div>
+		<!-- end inner -->
+	</nav>
+	<!-- end mobile-menu -->
+<nav class="navbar">
+  <div class="logo"> <a href="/index/playtv"> <img src="/images/logo.png" alt="Image"> </a> </div>
+  <!-- end logo -->
+  <div class="site-menu">
+    <ul>
+      <li><a href="/login/toIndex">返回主页</a></li>
+    </ul>
+  </div>
+  <!-- end site-menu -->
+  <div class="user-menu">
+    <div class="navbar-search"> <i class="lni lni-search-alt"></i> </div>
+    <!-- end navbar-search -->
+    <div class="navbar-notify"> <i class="lni lni-alarm"></i><b>2</b>
+      <div class="notify-dropdown">
+        <div class="total-notify">
+          <h6>欢迎来到show专区</h6>
+          <span>2</span> </div>
+        <!-- end total-notify -->
+        <ul>
+          <li>
+            <p><u>王者荣耀编程</u> showTime视频欢迎给我们投稿~</p>
+            <span>2天之内给您反馈</span></li>
+          <li>
+            <p>投稿q群：813319832</p>
+            <span>也可私聊开发人员</span></li>
+        </ul>
+      </div>
+      <!-- end notify-dropdown --> 
+    </div>
+    <!-- end navbar-notify -->
+    <div class="navbar-account"> <a href="#"> <i class="lni lni-user"></i><nobr th:text="${movieModel.user.name}"></nobr> </a></div>
+    <!-- end navbar-account --> 
+  </div>
+  <!-- end user-menu --> 
+      <div class="hamburger-menu">
+        <button class="hamburger">
+        <svg width="45" height="45" viewBox="0 0 100 100">
+          <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+          <path class="line line2" d="M 20,50 H 80" />
+          <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+        </svg>
+        </button>
+      </div>
+      <!-- end hamburger-menu --> 
+</nav>
+<!-- end navbar -->
+<section class="search-box">
+  <div class="container">
+    <h6>搜索视频名称</h6>
+    <form action="/movie/findmovie">
+      <input type="text" placeholder="JAVA视频" name="keyword">
+      <input type="submit" value="查找">
+    </form>
+
+    <ul>
+      <li><a href="#">JAVA惊天操作</a></li>
+      <li><a href="#">JAVA迷惑行为</a></li>
+      <li><a href="#">JAVA机制讲解</a></li>
+    </ul>
+  </div>
+  <!-- end container --> 
+</section>
+<header class="slider">
+  <div class="main-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="slide-inner" data-background="/images/libai.jpg">
+          <div class="container" data-swiper-parallax="200">
+            <h6 class="tagline">新热视频上架</h6>
+            <h2 class="name">Top of<br>
+              <strong>王者荣耀编程</strong></h2>
+            <ul class="features">
+              <li>
+                <div class="rate">
+                  <svg class="circle-chart" viewBox="0 0 30 30" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+                    <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                  </svg>
+                  <b>6.9</b> 热量 </div>
+                <!-- end rate --> 
+              </li>
+              <li>
+                <div class="year">2021</div>
+              </li>
+              <li>
+                <div class="hd">4K <b>尽量 HD</b></div>
+              </li>
+              <li>
+                <div class="tags">心动吗, Action</div>
+              </li>
+            </ul>
+            <p class="description">
+				欢迎来到编程峡谷 <br>I will carry you.
+				</p>
+            <a href="/movie/video/4" class="play-btn">即可进入kill</a> <a  href="/movie/video/4" class="add-btn">+</a> </div>
+          <!-- end container --> 
+        </div>
+        <!-- end slide-inner --> 
+      </div>
+      <!-- end swiper-slide -->
+      <div class="swiper-slide">
+        <div class="slide-inner bg-image" data-background="/images/luna.jpg">
+          <div class="container" data-swiper-parallax="200">
+            <h6 class="tagline">新品上架</h6>
+            <h2 class="name">Java标识符与关键字 <br>
+              <strong>知识点秒杀？</strong></h2>
+            <ul class="features">
+              <li>
+                <div class="year">2021新款视频</div>
+              </li>
+              <li>
+                <div class="hd">1080 <b>HD</b></div>
+              </li>
+              <li>
+                <div class="tags">值得学习, 白嫖最值系列</div>
+              </li>
+            </ul>
+            <p class="description">这是悄咪咪给大家透漏的露娜新皮肤特效以及模型，可以看到，<br>
+              浑身穿着都是青花瓷元素的服饰，搭配上神秘感十足的武器和鉴定时佩戴的白手套， 十分美艳动人。 </p>
+            <a href="/movie/video/5" class="play-btn">围观白嫖系列</a> <a  href="/movie/video/5" class="add-btn">+</a> </div>
+          <!-- end container --> 
+        </div>
+        <!-- end slide-inner --> 
+      </div>
+      <!-- end swiper-slide -->
+      <div class="swiper-slide">
+        <div class="slide-inner bg-image" data-background="/headpicture/tl.jpg">
+          <div class="container" data-swiper-parallax="200">
+            <h6 class="tagline">荣耀王者解析JAVA进阶秘籍</h6>
+            <h2 class="name">如何在java中游刃有余？<br>
+              <strong>荣耀狂神讲坛</strong></h2>
+            <ul class="features">
+              <li>
+                <div class="year">2021最新上分秘籍</div>
+              </li>
+              <li>
+                <div class="hd">720P? <b>HD</b></div>
+              </li>
+              <li>
+                <div class="tags">混分之王</div>
+              </li>
+            </ul>
+            <p class="description">KuangShen是一名自学成才玩家，<br>给大家介绍如何学习最有效</p>
+            <a href="/movie/video/6" class="play-btn">看看就好</a> <a  href="/movie/video/6" class="add-btn">+</a> </div>
+          <!-- end container --> 
+        </div>
+        <!-- end slide-inner --> 
+      </div>
+      <!-- end swiper-slide --> 
+    </div>
+    <!-- end swiper-wrapper -->
+    <div class="swiper-pagination"></div>
+    <!-- end swiper-pagination --> 
+  </div>
+  <!-- end main-slider --> 
+</header>
+<!-- end slider -->
+<main>
+  <section class="content-section">
+    <video style="margin-bottom:60px;height: 600px;width: 100%;s" data-v-f705397c="" poster="//ci.xiaohongshu.com/spectrum/16bca5cb4596fe0800680552ae2d417002c19a53?imageView2/2/w/1080/format/jpg" src="http://v.xiaohongshu.com/286701c00665a48a4bdb2cb61d9af1f6908f2d10_r?sign=c2eee1b84cad02ce7ec068679a300f09&amp;t=60995880" controls="controls" objectfit="contain" class="videocontent"></video>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title">
+            <h6>直击Java解析现场</h6>
+            <h2>奥里给</h2>
+          </div>
+          <!-- end section-title -->
+
+        </div>
+
+        <!-- end col-12 -->
+        <div class="col-lg-3 col-sm-6">
+          <div class="category-thumb">
+            <figure class="category-image"> <img src="/images/libai.jpg" alt="Image"> </figure>
+            <div class="category-content">
+              <ul class="tags">
+                <li>细致</li>
+                <li>天秀操作</li>
+              </ul>
+              <h3 class="name">你能做到吗？</h3>
+              <div class="play-btn"><a href="/movie/video/4">+</a></div>
+              <small class="details">注释 <span>-</span> 2021</small> </div>
+            <!-- end category-content --> 
+          </div>
+          <!-- end category-thumb --> 
+        </div>
+        <!-- end col-3 -->
+        
+        <div class="col-lg-3 col-sm-6">
+          <div class="category-thumb">
+            <figure class="category-image"> <img src="/images/luna.jpg" alt="Image"> </figure>
+            <div class="category-content">
+              <ul class="tags">
+                <li>Java数据类型</li>
+              </ul>
+              <h3 class="name">月下无限连</h3>
+              <div class="play-btn"><a href="/movie/video/5">+</a></div>
+              <small class="details">标识符与关键字<span>-</span> 2021</small> </div>
+            <!-- end category-content --> 
+          </div>
+          <!-- end category-thumb --> 
+        </div>
+        <!-- end col-3 -->
+        <div class="col-lg-3 col-sm-6">
+          <div class="category-thumb">
+            <figure class="category-image"> <img src="/images/waner.jpg" alt="Image"> </figure>
+            <div class="category-content">
+              <ul class="tags">
+                <li>Java变量&常量</li>
+              </ul>
+              <h3 class="name">细致讲解</h3>
+              <div class="play-btn"><a href="/movie/video/6">+</a></div>
+              <small class="details">数据类型讲解 <span>-</span> 2021</small> </div>
+            <!-- end category-content --> 
+          </div>
+          <!-- end category-thumb --> 
+        </div>
+        <!-- end col-3 -->
+        <div class="col-lg-3 col-sm-6">
+          <div class="category-thumb">
+            <figure class="category-image"> <img src="/images/make.jpg" alt="Image"> </figure>
+            <div class="category-content">
+              <ul class="tags">
+                <li>真伤无敌</li>
+                <li>输出核心</li>
+              </ul>
+              <h3 class="name">逻辑运算符</h3>
+              <div class="play-btn"><a href="/movie/video/7">+</a></div>
+              <small class="details">类型转换 <span>-</span> 2021</small> </div>
+            <!-- end category-content --> 
+          </div>
+          <!-- end category-thumb --> 
+        </div>
+        <!-- end col-3 --> 
+      </div>
+      <!-- end row --> 
+    </div>
+    <!-- end container --> 
+  </section>
+  <!-- end content-section -->
+  <section class="content-section no-top-spacing">
+    <div class="container">
+      <div class="row align-items-center no-gutters">
+        <!-- end col-6 -->
+        <div class="col-lg-6">
+          <div class="side-content right">
+            <h2>免费的视频存放##TL服务器 <u>Free</u> experience.</h2>
+            <ul class="icon-list">
+              <li>
+                <figure> <img src="/images/icon01.png" alt="Image"> </figure>
+                <figure> <img src="/images/icon02.png" alt="Image"> </figure>
+                <figure> <img src="/images/icon03.png" alt="Image"> </figure>
+                <br><br>
+                <div class="content">
+                  <h4>在这里让他人观摩到你的天秀Java操作</h4>
+                  <p>我们给你提供最好的展现平台.</p>
+                  <p>为了更好地服务器支撑，请在主界面资助专区给予您宝贵的支持.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- end side-content --> 
+        </div>
+        <!-- end col-6 --> 
+      </div>
+      <!-- end row --> 
+    </div>
+    <!-- end container --> 
+  </section>
+  <!-- end content-section -->
+  <section class="content-section" data-background="#111111">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title text-center light">
+            <h6>发现更好的Java</h6>
+            <h2>ShowTime For You</h2>
+          </div>
+          <!-- end section-title --> 
+        </div>
+        <!-- end col-12 -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+          <div class="video-thumb light">
+            <a href="/movie/video/8"><figure class="video-image"> <img src="/images/sulie.jpg" alt="Image">
+              <div class="circle-rate">
+                <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+                  <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                </svg>
+                <b>5.7</b> </div>
+              <!-- end circle-rate -->
+              <div class="hd">1080 <b>HD</b></div>
+              <!-- end hd --> 
+            </figure></a>
+            <div class="video-content"> <small class="range">0.5 min,</small>
+              <ul class="tags">
+                <li>基本运算符</li>
+              </ul>
+              <div class="age">PG13</div>
+              <!-- end age -->
+              <h3 class="name"><a href="/movie/video/9">java小白进阶</a></h3>
+            </div>
+            <!-- end video-content --> 
+          </div>
+          <!-- end video-thumb --> 
+        </div>
+        <!-- end col-12 -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+          <div class="video-thumb light">
+            <a href="/movie/video/10"><figure class="video-image"> <img src="/images/yuji.jpg" alt="Image">
+              <div class="circle-rate">
+                <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+                  <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                </svg>
+                <b>5.7</b> </div>
+              <!-- end circle-rate -->
+              <div class="hd">1080 <b>HD</b></div>
+              <!-- end hd -->
+            </figure></a>
+            <div class="video-content"> <small class="range">0.3 min,</small>
+              <ul class="tags">
+                <li>自增自减运算</li>
+              </ul>
+              <div class="age">PG13</div>
+              <!-- end age -->
+              <h3 class="name"><a href="/movie/video/11">java基础小白</a></h3>
+            </div>
+
+            <!-- end video-content -->
+          </div>
+          <!-- end video-thumb -->
+        </div>
+        <!-- end col-12 -->
+        <!-- end col-12 -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+          <div class="video-thumb light">
+            <a href="#"><figure class="video-image"> <img src="/images/wangzhe.png" alt="Image">
+              <div class="circle-rate">
+                <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+                  <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                </svg>
+                <b>5.7</b> </div>
+              <!-- end circle-rate -->
+              <div class="hd">1080 <b>HD</b></div>
+              <!-- end hd -->
+            </figure></a>
+            <div class="video-content"> <small class="range">16 min,</small>
+              <ul class="tags">
+                <li>逻辑运算</li>
+              </ul>
+              <div class="age">PG13</div>
+              <!-- end age -->
+              <h3 class="name"><a href="/movie/video/12">java基础小白</a></h3>
+            </div>
+            <!-- end video-content -->
+          </div>
+          <!-- end video-thumb -->
+        </div>
+
+    <!-- end col-12 -->
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+      <div class="video-thumb light">
+        <a href="#"><figure class="video-image"> <img src="/images/wangzhe.png" alt="Image">
+          <div class="circle-rate">
+            <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+              <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+            </svg>
+            <b>5.7</b> </div>
+          <!-- end circle-rate -->
+          <div class="hd">1080 <b>HD</b></div>
+          <!-- end hd -->
+        </figure></a>
+        <div class="video-content"> <small class="range">16 min,</small>
+          <ul class="tags">
+            <li>三元运算符</li>
+          </ul>
+          <div class="age">PG13</div>
+          <!-- end age -->
+          <h3 class="name"><a href="/movie/video/13">java基础小白</a></h3>
+        </div>
+        <!-- end video-content -->
+      </div>
+      <!-- end video-thumb -->
+    </div>
+
+    <!-- end col-12 -->
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+      <div class="video-thumb light">
+        <a href="#"><figure class="video-image"> <img src="/images/wangzhe.png" alt="Image">
+          <div class="circle-rate">
+            <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+              <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+            </svg>
+            <b>5.7</b> </div>
+          <!-- end circle-rate -->
+          <div class="hd">1080 <b>HD</b></div>
+          <!-- end hd -->
+        </figure></a>
+        <div class="video-content"> <small class="range">9 min,</small>
+          <ul class="tags">
+            <li>包机制</li>
+          </ul>
+          <div class="age">PG13</div>
+          <!-- end age -->
+          <h3 class="name"><a href="/movie/video/14">java基础小白</a></h3>
+        </div>
+        <!-- end video-content -->
+      </div>
+      <!-- end video-thumb -->
+    </div>
+
+    <!-- end col-12 -->
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+      <div class="video-thumb light">
+        <a href="#"><figure class="video-image"> <img src="/images/wangzhe.png" alt="Image">
+          <div class="circle-rate">
+            <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+              <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+            </svg>
+            <b>5.7</b> </div>
+          <!-- end circle-rate -->
+          <div class="hd">1080 <b>HD</b></div>
+          <!-- end hd -->
+        </figure></a>
+        <div class="video-content"> <small class="range">15 min,</small>
+          <ul class="tags">
+            <li>JavaDoc文档</li>
+          </ul>
+          <div class="age">PG13</div>
+          <!-- end age -->
+          <h3 class="name"><a href="/movie/video/15">java基础小白</a></h3>
+        </div>
+        <!-- end video-content -->
+      </div>
+      <!-- end video-thumb -->
+    </div>
+    </div>
+    </div>
+    <!-- end container --> 
+  </section>
+  <!-- end content-section -->
+  <section class="content-section" data-background="/images/section-pattern01.png">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <div class="testimonial">
+            <h2 style="color: #26c6da">期待每一个加入的用户参与我们的项目建设中 </h2>
+            <blockquote>“校园建设平台，体验更好的大学生活，期待您的投稿~”</blockquote>
+            <figure> <img src="/headpicture/tl.jpg" alt="Image"> <img src="/images/brand01.jpg" alt="Image"> </figure>
+            <h6>谭龙 <br>
+              <small style="color:red;">项目设计者，软件开发负责人</small> </h6>
+          </div>
+          <!-- end testimonial --> 
+        </div>
+        <!-- end col-7 -->
+        <div class="col-lg-5">
+          <figure class="side-image"> <img style="opacity: 0.9;" src="/images/zhuge.jpg" alt="Image"> </figure>
+          <!-- end side-image --> 
+        </div>
+        <!-- end col-5 -->
+
+      </div>
+      <!-- end row --> 
+    </div>
+    <!-- end container --> 
+  </section>
+  <!-- end content-section -->
+  <section class="content-section">
+    <div class="video-bg" style="background-color: #26c6da">
+    </div>
+    <!-- end video-bg -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title text-center light">
+            <h6>巅峰荣耀_java</h6>
+            <h2> Are you ready to start the road of chongfen ?</h2>
+          </div>
+          <!-- end section-title --> 
+        </div>
+        <!-- end col-12 --> 
+      </div>
+      <!-- end row -->
+      <div class="row">
+
+
+        <!-- end col-4 --> 
+      </div>
+      <!-- end row --> 
+    </div>
+    <!-- end container --> 
+  </section>
+  <!-- end content-section -->
+
+</main>
+
+<!-- JS FILES -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/swiper.min.js"></script>
+    <script src="/js/fancybox.min.js"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

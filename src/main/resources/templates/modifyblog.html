@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>修改文章</title>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+
+    <!--  头像操作-->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+
+<body>
+
+<!-- Main Container -->
+
+<!--     form begin   -->
+
+<div class="main" id="main">
+    <!-- Toolbar -->
+    <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left"  >
+            <a href="/login/toIndex">
+                <i class="ion-log-out m-1 white-text"></i>
+            </a>
+        </div>
+    </div><br><br><br><br>
+
+
+    <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg" style="font-size: x-large">&nbsp;&nbsp;修改文章
+        </strong><small></small></div>
+    </div>
+    <hr>
+
+    <!-- Form Inputs -->
+    <form action="/blog/modifysave" id="blog_form" method="post" th:object="${blogModel.article}" enctype="multipart/form-data">
+
+        <div class="edit_content">
+            <div class="item1">
+                <div>
+                    &nbsp;&nbsp;<i class="ion-chatbubble"></i>&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;color: darkturquoise">文章标题</span>
+                    <input type="text" class="am-form-field" name="title" th:value="*{title}" style="border-width: 2px;width: 200px">&nbsp;&nbsp;
+                </div>
+            </div>
+            <input type="text" name="description" id="description" style="display: none;"/>
+
+            <br>
+            <div class="item2">
+                <div>
+                    &nbsp;&nbsp;<i class="ion-chatbox-working"></i>&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;color: darkturquoise">文章简介</span>
+                    <div><textarea name="summarize" th:value="*{summarize}" th:text="*{summarize}" id="summarize" style="background-color:seashell;height: 160px;width: 200px;margin-left: 90px;border-radius: 10px;border-width: 2px"></textarea></div>
+                </div>
+            </div>
+
+            <div class="item1" id="type" name="type">
+                &nbsp;&nbsp;<i class="ion-pricetag"></i><span style="font-weight: bold;color: darkturquoise">所属分类：</span>
+                <select class="btn btn-info" style="width: 150px" name="type">
+
+                    <option value="0">请选择</option>
+                    <option th:each="type: ${blogModel.typeList}"
+                            th:text="${type}"
+                            th:selected="${type}"
+                            th:name="${type}">
+                    </option>
+                </select>
+            </div>
+            <br>
+            <div class="item1 update_pic" >
+                &nbsp;&nbsp;<i class="ion-image"></i><span style="font-weight: bold;color: darkturquoise">摘要图片：</span>
+                <img src="" id="imageview" class="item1_img" name="cover" />
+                <input type="hidden" th:value="${blogModel.article.cover}" id="coverimg" name="cover2"/>
+                <label for="file" id="label_file"></label>
+                <input type="file" name="file" id="file"  class="waves-effect waves-light btn-large accent-color block m-b-10 animated bouncein delay-2"style="width: 340px;margin-left: 10px;margin-top: 20px"/>
+
+            </input>
+
+
+            <br><br><br>
+            <div id="editor" name="content" style="margin-left: 10px;width:900px;height:400px;"></div>
+            <input type="hidden" id="resContent" th:value="*{content}" />
+
+            <input type="hidden" name="articleDate" th:value="*{articleDate}"/>
+            <input type="hidden" name="id" th:value="*{id}"/>
+            <input type="hidden" name="userId" th:value="*{userId}"/>
+            <input type="hidden" name="pageViews" th:value="*{pageViews}"/>
+            <input type="hidden" name="pageLikes" th:value="*{pageLikes}"/>
+            <input type="hidden" name="comments" th:value="*{comments}"/>
+            <input type="hidden" name="collects" th:value="*{collects}"/>
+            <input type="hidden" name="recommends" th:value="*{recommends}"/>
+
+
+
+
+            <button class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2" type="button" id="send" style="margin-left:10px;margin-top: 16px;width: 360px">修改</button>
+        </div>
+        </div>
+    </form>
+    <!-- End of Form -->
+
+    <!-- Footer -->
+    <footer class="page-footer primary-color">
+        <div class="section center">
+            <h2 class="heading white-text">无形之刃，IT致命</h2>
+            <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝.</p>
+            <div class="footer-icons">
+                <i class="ion-social-facebook m-10 white-text"></i>
+                <i class="ion-social-twitter m-10 white-text"></i>
+                <i class="ion-social-pinterest m-10 white-text"></i>
+                <i class="ion-social-instagram m-10 white-text"></i>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container center">
+                <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+            </div>
+        </div>
+    </footer>
+</div>
+</div>
+<script>
+    $(function () {
+        var img = document.getElementById("coverimg").value
+        $("#imageview").attr("src","/login/cover?name="+img);
+
+        /*原理是把本地图片路径："D(盘符):/image/..."转为"http://..."格式路径来进行显示图片*/
+        $("#file").change(function() {
+            var $file = $(this);
+            var objUrl = $file[0].files[0];
+            //获得一个http格式的url路径:mozilla(firefox)||webkit or chrome
+            var windowURL = window.URL || window.webkitURL;
+            //createObjectURL创建一个指向该参数对象(图片)的URL
+            var dataURL;
+            dataURL = windowURL.createObjectURL(objUrl);
+            $("#imageview").attr("src",dataURL);
+            console.log(dataURL);
+            console.log($('#imageview').attr('style'));
+            if($('#imageview').attr('style') === 'display: none;'){
+                $('#imageview').attr('style','inline');
+                $('#imageview').width("300px");
+                $('#imageview').height("200px");
+                $('.update_pic').attr('style', 'margin-bottom: 80px;margin-left: 12px;');
+            }
+        });
+
+        //创建一个可存取到该file的url
+        function getObjectURL(file) {
+            var url = null ;
+            // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file) ;
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url ;
+        }
+
+
+        /*初始化富文本编辑器*/
+        var ue = UE.getEditor('editor');
+        //原内容显示
+        ue.ready(function () {
+            ue.execCommand("inserthtml", $("#resContent").val());
+        });
+        /*监听提交按钮*/
+        $("#send").click(function () {
+            /*设置文本描述*/
+            //获取富文本编辑器
+            var text = ue.getContentTxt();
+            text = text.substring(0, 100) + "...";
+            console.log(text)
+            //设置描述
+            $("#description").val(text);
+            //提交表单
+            $("#blog_form").submit();
+        });
+    });
+</script>
+<!-- End of Page Contents -->
+
+<!-- Sidebars -->
+
+
+
+<!-- End of Sidebars -->
+
+</div>
+<!-- End of Main Container -->
+
+<!-- Scripts -->
+<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="/js/helper.js"></script>
+<script src="/js/vendor/HeadsUp.js"></script>
+<script src="/js/vendor/jquery.smoothState.js"></script>
+<script src="/js/vendor/chart.min.js"></script>
+<script src="/js/vendor/jquery.mixitup.min.js"></script>
+<script src="/js/vendor/jquery.swipebox.min.js"></script>
+<script src="/js/vendor/masonry.min.js"></script>
+<script src="/js/vendor/swiper.min.js"></script>
+<script src="/js/vendor/materialize.min.js"></script>
+
+</body>
+</html>

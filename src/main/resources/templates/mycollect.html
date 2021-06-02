@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>我的收藏</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/" >
+  -->
+
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="">
+  -->
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/swipebox.min.css">
+  <link rel="stylesheet" href="/css/swiper.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+  <!--  搜索框用的-->
+
+</head>
+  
+  <body>
+
+  <!-- Main Container -->
+    <div id="main" class="main">
+
+      <!-- 退出按钮 -->
+      <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left"  >
+          <a href="/login/toIndex">
+            <i class="ion-log-out white-text"></i>
+          </a>
+        </div>
+      </div><br><br>
+      <!-- End of Toolbar -->
+<!--         时间查找-->
+
+      <!-- Page Contents -->
+      <div class="page animated fadeinup">
+        <input type="date">
+        <input class="btn" type="button" value="查找">
+        <div class="ppp"></div>
+
+      <div th:each="mycollect:${mycollectModel.userArticleCollectList}" class="z">
+        <div class="card fullscreen">
+          <div class="card-image">
+            <a th:href="@{'/blog/content/'+${mycollect.articleId}}"><img th:src="@{'/login/cover?name='+${mycollect.cover}}" alt=""></a>
+          </div>
+          <div class="card-feedback">
+            <div class="card-users">
+              <i class="ion-ios-heart accent-text"></i> <span th:text="${mycollect.good}"></span>
+              <i class="ion-chatbubble-working"></i> <span th:text="${mycollect.comment}"></span>
+            </div>
+            <div class="card-share" style="font-weight: bold;color: #2aabd2">
+              <i class="ion-android-bookmark"></i> 收藏时间: <span th:text="${mycollect.collecttime}"></span>
+            </div>
+          </div>
+          <div class="card-content">
+            <h5><strong style="display:-webkit-box;-webkit-box-orient:vertical;word-break:break-all;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;" th:text="${mycollect.title}"></strong></h5>
+          </div>
+          <div class="card-author">
+            <div class="media-top-object middle">
+              <!--   此处userId为学号-->
+              <a th:href="@{'/user/'+${mycollect.userId}}"><img th:src="@{'/login/picture?name='+${mycollect.headpicture}}" alt="" class="avatar"></a>
+              <div class="media-body">
+                <span class="small" style="font-weight: bold;"><div th:text="${mycollect.name}"></div> <a href="#!" class="accent-text">发布时间: <nobr th:text="${mycollect.outtime}"></nobr></a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Footer -->
+        <footer class="page-footer primary-color">
+          <div class="section center">
+            <h2 class="heading white-text">无形之刃，IT致命</h2>
+            <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝.</p>
+            <div class="footer-icons">
+              <i class="ion-social-facebook m-10 white-text"></i>
+              <i class="ion-social-twitter m-10 white-text"></i>
+              <i class="ion-social-pinterest m-10 white-text"></i>
+              <i class="ion-social-instagram m-10 white-text"></i>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container center">
+              <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+            </div>
+          </div>
+        </footer>
+      
+      </div> 
+      <!-- End of Page Contents -->
+
+        
+    </div>
+  <!-- End of Main Container -->
+  <!-- Scripts -->
+  <script src="/js/vendor/jquery-2.1.0.min.js"></script>
+  <script src="/js/helper.js"></script>
+  <script src="/js/vendor/HeadsUp.js"></script>
+  <script src="/js/vendor/jquery.smoothState.js"></script>
+  <script src="/js/vendor/chart.min.js"></script>
+  <script src="/js/vendor/jquery.mixitup.min.js"></script>
+  <script src="/js/vendor/jquery.swipebox.min.js"></script>
+  <script src="/js/vendor/masonry.min.js"></script>
+  <script src="/js/vendor/swiper.min.js"></script>
+  <script src="/js/vendor/materialize.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+     $(function () {
+      $('input[type="button"]').click(function () {
+        var d = $('input[type=date]').val();
+         $.get("/blog/dateblog",{date:d},function(data){
+               $(".z").remove();
+               $(".ppp").empty();
+                 $.each(data,function () {
+                   var x = '      <div >\n' +
+                           '        <div class="card fullscreen">\n' +
+                           '          <div class="card-image">\n' +
+                           '            <a href="/blog/content/'+this.articleId+'"><img src="/login/cover?name='+this.cover+'" alt=""></a>\n' +
+                           '          </div>\n' +
+                           '          <div class="card-feedback">\n' +
+                           '            <div class="card-users">\n' +
+                           '              <i class="ion-ios-heart accent-text"></i> <span>'+this.good+'</span>\n' +
+                           '              <i class="ion-chatbubble-working"></i> <span>'+this.comment+'</span>\n' +
+                           '            </div>\n' +
+                           '            <div class="card-share" style="font-weight: bold;color: #2aabd2">\n' +
+                           '              <i class="ion-android-bookmark"></i> 收藏时间: <span>'+this.collecttime+'</span>\n' +
+                           '            </div>\n' +
+                           '          </div>\n' +
+                           '          <div class="card-content">\n' +
+                           '            <h5><strong style="display:-webkit-box;-webkit-box-orient:vertical;word-break:break-all;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;">'+this.title+'</strong></h5>\n' +
+                           '          </div>\n' +
+                           '          <div class="card-author">\n' +
+                           '            <div class="media-top-object middle">\n' +
+                           '              <!--   此处userId为学号-->\n' +
+                           '              <a th:href="@{\'/user/\'+this.userId}"><img src="/login/picture?name='+this.headpicture+'" alt="" class="avatar"></a>\n' +
+                           '              <div class="media-body">\n' +
+                           '                <span class="small" style="font-weight: bold;"><div>'+this.name+'</div> <a href="#!" class="accent-text">发布时间: <nobr>'+this.outtime+'</nobr></a></span>\n' +
+                           '              </div>\n' +
+                           '            </div>\n' +
+                           '          </div>\n' +
+                           '        </div>\n' +
+                           '      </div>';
+                   $(".ppp").append(x)
+                 })
+         })
+      })
+    })
+  </script>
+  </body>
+</html>

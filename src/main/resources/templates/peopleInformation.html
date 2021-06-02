@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>人员信息</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        header{
+            margin-top: 50px;
+            flex-direction: row;
+        }
+        header>.nav{
+            display: flex;
+            height: 220px;
+            width:100%;
+            /* text-align: center; */
+        }
+        header>.nav>.left{
+            width: 60px;
+            height:220px;
+            padding: 55px 0 55px 5px;
+            /* text-align: center; */
+            flex: 1;
+            cursor: default;
+        }
+        header>.nav>.left>a{
+            width: 100px;
+            /* margin:0 auto; */
+            cursor: pointer;
+            background-color: black;
+        }
+        header>.nav>.left>a>img{
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            margin:0 auto;
+            /* vertical-align: center; */
+            /* text-align: center; */
+            cursor: pointer;
+        }
+        header>.nav>.left>a>img:hover{
+            opacity: 0.6;
+        }
+        header>.nav>.right{
+            height: 220px;
+            flex: 2;
+            /* background-color: red; */
+            /* display: flex; */
+            text-align: left;
+            /* flex-direction: column; */
+            padding: 30px 20px 0 10px;
+            padding-right: 30px;
+        }
+        header>.nav>.right>.right-top{
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 30px;
+            height: 10%;
+        }
+        header>.nav>.right>.right-top>.level{
+            font-size: 13px;
+            display: inline-block;
+            width: 45px;
+            height: 18px;
+            line-height: 18px;
+            background: #AFD3F5;
+            border-radius: 2px;
+            color: #fff;
+            margin-right: 16px;
+            padding-left: 4px;
+            margin-left: 10px;
+            position: relative;
+            bottom: 5px;
+        }
+        header>.nav>.right>.right-center{
+            margin-top: 34px;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 30px;
+        }
+        header>.nav>.right>.right-bottom{
+            margin-top: 28px;
+            line-height: 20px;
+            /* flex-direction: row; */
+            /* display: flex; */
+            height: 20%;
+        }
+        header>.nav>.right>.right-under{
+            display: flex;
+        }
+        header>.nav>.right>.right-under>.major{
+            /* flex: 1; */
+            padding-right: 4px;
+        }
+        header>.nav>.right>.right-under>.visits{
+            flex: 1;
+            padding-right: 4px;
+        }
+        header>.nav>.right>.right-under>.thumbsup{
+            flex: 1;
+            padding-right: 4px;
+        }
+        header>.nav>.right>.right-bottom>.modifytop{
+            /* flex: 1; */
+            cursor: pointer;
+            color: #0059BC;
+            text-decoration: underline;
+            width: 100px;
+        }
+        .fenge1{
+            width: 100%;
+            height: 40px;
+            /* background-color: lightgreen; */
+            margin-top: 40px;
+        }
+        .fenge1>.fenge1-font{
+            font-size: 16px;
+            font-weight: 600;
+            font-family: Microsoft YaHei;
+            color: #969696;
+        }
+        .fenge1>.xian1{
+            float: left;
+            width: 100%;
+            border-bottom: 2px solid #E9E9E9;
+            position: relative;
+            bottom: 32px;
+            left: 100px;
+        }
+        center{
+            width: 100%;
+            height: 160px;
+            /* background-color: #007AFF; */
+            margin: 0 auto;
+        }
+        center>.cent{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+        center>.cent>p{
+            width: 50%;
+            height: 45px;
+            /* line-height: 80px; */
+            margin-top: 30px;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
+        }
+        .fenge2{
+            width: 100%;
+            height: 40px;
+            /* background-color: lightgreen; */
+            margin-top: 40px;
+        }
+        .fenge2>.fenge2-font{
+            font-size: 16px;
+            font-weight: 600;
+            font-family: Microsoft YaHei;
+            color: #969696;
+        }
+        .fenge2>.xian2{
+            float: left;
+            width: 100%;
+            border-bottom: 2px solid #E9E9E9;
+            position: relative;
+            bottom: 32px;
+            left: 100px;
+        }
+        footer{
+            width: 100%;
+            /* background-color: #007AFF; */
+            display: flex;
+            padding: 5px 10px 0 10px;
+            height: 160px;
+            vertical-align: middle;
+            text-align: center;
+            margin: 0 auto;
+        }
+        footer>span{
+            width:50%;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            cursor: default;
+            margin: 0 auto;
+            display: flex;
+        }
+        footer>span>.phone{
+            /* background-color:lightcoral; */
+            vertical-align: center;
+            text-align: center;
+            /* margin-top: 20px; */
+            line-height: 30px;
+            flex: 1;
+        }
+        footer>span>.phone>.phone-left>.ion-chatbubble-working{
+            font-size: 40px;
+            color: #2E2E2E;
+        }
+        footer>span>.phone>.modifybl{
+            margin-left: 4px;
+            height: 16px;
+            width: 20px;
+            background-color: #81BEF7;
+            line-height: 16px;
+            border-radius: 4px;
+            border: 1px solid #BDBDBD;
+            /* color: #fff; */
+            cursor: pointer;
+        }
+        footer>span>.phone>.modifybl:hover{
+            background-color: #FFFFFF;
+        }
+        footer>span>.password{
+            /* background-color:lightcoral; */
+            vertical-align: center;
+            text-align: center;
+            /* margin-top: 20px; */
+            line-height: 30px;
+            flex: 1;
+        }
+        footer>span>.password>.password-left>.ion-android-lock{
+            font-size: 40px;
+            color: #2E2E2E;
+        }
+        footer>span>.password>.modifyps{
+            margin-left: 2px;
+            height: 16px;
+            width: 20px;
+            background-color: #81BEF7;
+            line-height: 16px;
+            border-radius: 4px;
+            border: 1px solid #BDBDBD;
+            cursor: pointer;
+        }
+        footer>span>.password>.modifyps:hover{
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<!-- Toolbar -->
+<!-- Toolbar -->
+
+    <div id="toolbar" class="primary-color z-depth-1">
+        <div class="open-left" id="open-left" data-activates="slide-out-left">
+            <a href="/login/toIndex">
+                <i class="ion-log-out m-1 white-text"></i>
+            </a>
+        </div>
+
+    <h1 class="title" style="font-weight: bold">用户个人信息</h1>
+
+</div>
+<!-- End of Toolbar -->
+<header>
+    <div class="nav">
+				<span class="left">
+					<a href="#"><img th:src="@{'/login/picture?name='+${userModel.user.headpicture}}" alt=""></a>
+				</span>
+        <span class="right">
+					<div class="right-top">
+						<span class="username">用户名：<nobr th:text="${userModel.user.name}"></nobr></span>
+						<span class="level">LV<nobr th:text="${userModel.user.grade}/10000"></nobr></span>
+					</div>
+					<div class="right-center">
+						&nbsp;学号：<nobr th:text="${userModel.user.userId}"></nobr>
+					</div>
+					<div class="right-bottom">
+						&nbsp;<span class="major">专业：<nobr th:text="${userModel.user.speciality}"/></span>&nbsp;&nbsp;
+						<a class="#"><i class="ion-android-create"></i>×</a>
+					</div>
+            <br>
+					<div class="right-under">
+						<span class="visits"><i class="ion-person"></i>身份:
+                            <nobr th:if="${userModel.user.root} eq 0">
+                            学生
+                            </nobr>
+                            <nobr th:if="${userModel.user.root} eq 1">
+                            老师
+                            </nobr>
+                            <nobr th:if="${userModel.user.root} eq 2">
+                            管理员
+                            </nobr>
+						</span>
+                        &nbsp;
+						<span class="thumbsup"><i class="ion-thumbsup"></i>点赞数:<nobr th:text="${userModel.user.goodtimes}"/>
+						</span>
+
+					</div>
+				</span>
+    </div>
+</header>
+<div class="fenge1">
+    <h3 class="fenge1-font">个人基础信息</h3>
+    <div class="xian1"></div>
+</div>
+<center>
+    <div class="cent">
+        <p>姓名：<nobr th:text="${userModel.user.name}"/></p>
+        <p>性别：<nobr th:text="${userModel.user.sex}"/></p>
+        <p style="margin-left: 27px;width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">标签：<nobr th:text="${userModel.user.signature}"/></p>
+    </div>
+</center>
+<div class="fenge2">
+    <h4 class="fenge2-font">账号基础信息</h4>
+    <div class="xian2"></div>
+</div>
+<footer>
+			<span>
+				<div class="phone">
+					<span class="phone-left"><i class="ion-chatbubble-working"></i></span>
+					<span class="phone-right"><div class="phone-top">我的博客</div>
+					<div class="phone-bottom">点击查看我的博客</div></span>
+					<a th:href="@{'/blog/'+${userModel.user.id}}" class="modifybl">我的博客</a>
+				</div>
+			</span>
+            <span>
+				<div class="password">
+					<span class="password-left"><i class="ion-android-lock"></i></span>
+					<span class="password-right"><div class="password-top">修改密码</div>
+					<div class="password-bottom">非本人无法操作</div></span>
+					<a href="#" class="modifyps">修改密码</a>
+				</div>
+			</span>
+</footer>
+</body>
+</html>

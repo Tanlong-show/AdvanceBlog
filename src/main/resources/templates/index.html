@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>HBUE-it校园通</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/" >
+  -->
+
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="">
+  -->
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <!-- Icons -->
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/swipebox.min.css">
+  <link rel="stylesheet" href="/css/swiper.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+
+  <script src="/js/vendor/jquery-2.1.0.min.js"></script>
+
+<!--  搜索框用的-->
+
+</head>
+
+
+<body>
+
+<!-- Main Container -->
+<div id="main" class="main">
+
+<!--  嵌入页面-->
+
+  <div id="dg" style="z-index: 9999; position: fixed ! important; right: 45%; top: 85%;">
+    <div id="dg2" style="position: relative;margin-top: -405px;margin-right: -120px;">
+
+    </div>
+    <button style="background-color: powderblue;border-radius: 100%; height: 60px;width: 60px;z-index: 9999; position: fixed ! important; right: 45%; top: 85%;">
+      <i class="ion-android-add-circle big cyan-text"></i>
+    </button>
+
+  </div>
+<script>
+  //淡入淡出
+  /////
+  $('#dg').click(function () {
+    if(!document.getElementById('showtime')){
+      var str = '<iframe scrolling="auto" id="showtime" align="top" src="/index/suixin" width="300px" height="400px" frameborder="2"\n' +
+              '\n' +
+              'scrolling="no"></iframe>'
+
+      var iframe = document.getElementById('showtime');
+
+
+      $('#dg2').append(str);
+    }else{
+      $('#showtime').remove();
+    }
+  })
+
+</script>
+
+
+  <!-- Toolbar -->
+  <div id="toolbar" class="primary-color z-depth-1">
+    <div class="open-left" id="open-left" data-activates="slide-out-left">
+      <i class="ion-android-menu"></i>
+    </div>
+    <h1 class="title">HBUE-IT</h1>
+    <div class="open-right" id="open-right" data-activates="slide-out">
+      <i class="ion-android-person"></i>
+    </div>
+  </div>
+  <!-- End of Toolbar -->
+
+  <!-- Page Contents -->
+  <div class="page animated fadein">
+    <!-- Slider -->
+    <div class="swiper-container swiper-slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="/img/22.gif" alt="">
+          <div class="opacity-overlay"></div>
+          <div class="bottom center">
+            <h4 class="white-text m-0"><strong>HBUE</strong></h4>
+            <p class="text-flow white-text m-0">肝帝</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="/img/5.jpg" alt="">
+          <div class="opacity-overlay"></div>
+          <div class="bottom left-align">
+            <h4 class="white-text m-0"><strong>HBUE</strong></h4>
+            <p class="text-flow white-text m-0">go go go</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="/img/4.jpg" alt="">
+          <div class="opacity-overlay"></div>
+          <div class="bottom right-align">
+            <h4 class="white-text m-0"><strong>HBUE</strong></h4>
+            <p class="text-flow white-text m-0">奥里给</p>
+          </div>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    <!-- End of Slider -->
+
+    <!-- First Section -->
+    <div class="section center">
+      <i class="ion-aperture infograph"></i>
+      <h2 class="heading">湖北经济学院博客</h2>
+      <p>一个专注于解决广大湖经学子问题的网站！</p>
+    </div>
+
+
+
+
+
+
+
+    <!-- Testimonials Slider -->
+    <!-- Slider -->
+    <div class="swiper-container testimonials">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide center">
+          <p class="testimonial">"人生最宝贵的是生命，人生最需要的是学习，人生最愉快的是工作，人生最重要的是友谊。 人天天都学到一点东西，而往往所学到的是发现昨日学到的是错的。"</p>
+          <img src="/img/lixiang.jpg" alt="" class="avatar">
+          <h6 class="m-0">李祥</h6>
+          <p class="small">信息工程学院软件工程系专职教师。</p>
+        </div>
+        <div class="swiper-slide center">
+          <p class="testimonial">"对于攀登者来说，失掉往昔的足迹并不可惜，迷失了继续前时的方向却很危险。 奋斗者在汗水汇集的江河里，将事业之舟驶到了理想的彼岸。"</p>
+          <img src="/img/liupengyuan.jpg" alt="" class="avatar">
+          <h6 class="m-0">刘鹏远</h6>
+          <p class="small">副教授/高级工程师（系统分析师）</p>
+        </div>
+        <div class="swiper-slide center">
+          <p class="testimonial">"古来一切有成就的人，都很严肃地对待自己的生命，当他活着一天，总要尽量多劳动，多工作，多学习，不肯虚度年华，不让时间白白地浪费掉。"</p>
+          <img src="/img/pengyun.jpg" alt="" class="avatar">
+          <h6 class="m-0">彭芸</h6>
+          <p class="small">湖北经济学院金融学院教授，副院长。</p>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    <!-- End of Slider -->
+
+
+    <!-- Shop -->
+    <div class="section bg-5 center">
+      <div class="opacity-overlay"></div>
+      <div class="relative">
+        <h2 class="heading white-text">Money</h2>
+        <p class="white-text">has begun!</p>
+        <a href="/index/money" class="waves-effect waves-light btn-large primary-color m-20">资助我们</a>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="section center">
+      <i class="ion-image infograph"></i>
+      <h2 class="heading">经院IT展示</h2>
+      <p>你上墙了嘛？</p>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls right-align p-20 animated fadeinup delay-2">
+      <button id="ChangeLayout" class="left">List</button>
+      <button class="filter" data-filter="all">所有</button>
+      <button class="filter" data-filter=".category-1">代码</button>
+      <button class="filter" data-filter=".category-2">实验</button>
+      <button class="filter" data-filter=".category-3">荣誉</button>
+    </div>
+    <!-- Images -->
+    <div id="filter">
+      <!-- Swipeboox Contents -->
+      <section id="image-filter">
+        <div class="wrap small-width">
+          <div data-pswp-uid="1" id="demo-gallery" class="demo-gallery">
+            <a href="#" class="mix category-1">
+              <img src="/img/1.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-1">
+              <img src="/img/2.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-1">
+              <img src="/img/3.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-2">
+              <img src="/img/4.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-2">
+              <img src="/img/5.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-2">
+              <img src="/img/6.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-3">
+              <img src="/img/7.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-3">
+              <img src="/img/8.jpg" alt="image">
+            </a>
+            <a href="#" class="mix category-3">
+              <img src="/img/9.jpg" alt="image">
+            </a>
+          </div>
+        </div>
+      </section> <!-- End of Swipebox Contents -->
+    </div>
+
+    <div class="clr"></div> <!-- clear for the images floats -->
+
+    <!-- Newsletter -->
+    <div class="section center">
+      <h2 class="heading">试试就试试</h2>
+      <p>To always be informed receive special coupons!</p>
+      <form>
+        <div class="newsletter">
+          <div class="input-field">
+            <input id="last_name" type="text" class="validate" placeholder="你点，你再点">
+            <label for="last_name">Email？</label>
+          </div>
+          <a href="#" class="waves-effect waves-light btn primary-color">点我呀?</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer primary-color">
+      <div class="section center">
+        <h2 class="heading white-text">无形之刃，IT致命</h2>
+        <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝.</p>
+        <div class="footer-icons">
+          <i class="ion-social-facebook m-10 white-text"></i>
+          <i class="ion-social-twitter m-10 white-text"></i>
+          <i class="ion-social-pinterest m-10 white-text"></i>
+          <i class="ion-social-instagram m-10 white-text"></i>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">
+          <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- End of Page Contents -->
+
+  <!-- Sidebars -->
+  <!-- Left Sidebar -->
+  <ul id="slide-out-left" class="side-nav collapsible">
+    <li class="sidenav-avatar bg-material">
+      <div class="opacity-overlay-gradient"></div>
+      <div class="bottom">
+        <img th:src="@{'/login/picture?name='+${userModel.user.headpicture}}" alt="" class="avatar">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="color: #1c212a;font-weight: bolder">学号:<span th:text="${userModel.user.userId}"/>&nbsp;&nbsp;专业: <span th:text="${userModel.user.speciality}"/></span>
+
+        <!-- Dropdown Trigger -->
+        <span class="dropdown-button waves-effect waves-light" data-activates="dropdown1"><span th:text="${userModel.user.signature}"/><i class="ion-android-arrow-dropdown right"></i></span>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="/index/go">修改个人信息<i class="ion-ios-gear"></i></a></li>
+          <li class="divider"></li>
+          <li>
+            <a href="/login/firstIndex">
+                <i class="ion-android-exit"></i>退出登录<span class="more"><i class="ion-ios-arrow-right"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header waves-effect">
+        <i class="ion-android-home"></i>个人中心<span class="more"><i class="ion-ios-arrow-right"></i></span>
+      </div>
+      <div class="collapsible-body">
+        <ul class="collapsible">
+          <li>
+            <a href="/index/myblog"><i class="ion-android-document"></i>个人博客</a>
+            <a href="/index/level"><i class="ion-levels"></i>等级排行</a>
+            <a href="/index/otheranswer"><i class="ion-android-sad"></i>ta的回复</a>
+            <a href="/user/toto"><i class="ion-wand"></i>我的收藏</a>
+            <a href="/action/recomendfriend"><i class="ion-speakerphone"></i>词云&好友推荐</a>
+            <a href="/action/bloglike/0"><i class="ion-speakerphone"></i>文章推荐</a>
+
+          </li>
+        </ul>
+      </div>
+    </li>
+
+
+    <li>
+      <div class="collapsible-header waves-effect">
+        <i class="ion-android-apps"></i>图表统计<span class="more"><i class="ion-ios-arrow-right"></i></span>
+</div>
+      <div class="collapsible-body">
+        <ul class="collapsible">
+          <li>
+            <a href="/index/fulldata"><i class="ion-social-tux"></i>数据概览</a>
+            <a href="/index/go2"><i class="ion-pie-graph"></i>多图统计</a>
+            <a href="/index/data"><i class="ion-map"></i>定位寻址</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header waves-effect">
+        <i class="ion-android-list"></i>博客系统<span class="more"><i class="ion-ios-arrow-right"></i></span>
+      </div>
+      <div class="collapsible-body">
+        <ul class="collapsible">
+          <li>
+            <a href="/index/blogindex"><i class="ion-android-map"></i>博客主页</a>
+            <a href="/user/blogmanage2to"><i class="ion-wrench"></i>管理博客</a>
+            <a href="/index/recommend"><i class="ion-code-working"></i>每日推文</a>
+
+            <!--            ion-android-document-->
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header waves-effect">
+        <i class="ion-android-image"></i>娱乐频道<span class="more"><i class="ion-ios-arrow-right"></i></span>
+      </div>
+      <div class="collapsible-body">
+        <ul class="collapsible">
+          <li>
+            <a href="/index/luntan"><i class="ion-ios-book"></i>校园吃瓜</a>
+            <a href="/index/playtv"><i class="ion-planet"></i>TV-CodingTime</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header waves-effect">
+        <i class="ion-coffee"></i>开发者专栏<span class="more"><i class="ion-ios-arrow-right"></i></span>
+      </div>
+      <div class="collapsible-body">
+        <ul class="collapsible">
+          <li>
+            <a href="/index/peopleIntroduce"><i class="ion-person-stalker"></i>开发人员</a>
+            <a href="/user/contactUs"><i class="ion-android-phone-portrait"></i>联系我们</a>
+<!--            如果是管理员-->
+            <nobr th:if="${userModel.user.root} eq 2">
+              <a href="/index/usermanageto"><i class="ion-ios-people-outline"></i>用户管理</a>
+              <a href="/user/blogmanageto"><i class="ion-bookmark"></i>博客管理</a>
+            </nobr>
+
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li><a href="/index/money" class="waves-effect"><i class="ion-android-playstore"></i>资助捐献</a></li>
+    <li><a href="/index/version" class="waves-effect"><i class="ion-social-rss"></i>系统版本通知</a></li>
+  </ul>
+
+  <!-- Right Sidebar -->
+  <ul id="slide-out" class="side-nav">
+    <li class="sidenav-header">
+      <!-- Srearch bar -->
+      <nav>
+        <div class="nav-wrapper">
+            <div class="input-field">
+<!--              <input id="search" type="search" required>-->
+<!--              <label for="input_search"><i class="ion-android-search"></i></label>-->
+              <input type="search" id="input_search" th:value="${keyword}" placeholder="输入姓名(模糊查询)">
+              <i style="color: #00bcd4" class="ion-android-search"><input style="height: 20px;color: skyblue;background-color: white;font-size: 15px" type="button" value="搜" id="input_search_btn"></input></i>
+
+
+            </div>
+
+        </div>
+      </nav>
+    </li>
+
+
+
+    <!-- Tabs -->
+    <li>
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#sidebar1">帮助栏</a></li>
+        <li class="tab col s3"><a href="#sidebar2" class="active">好友</a></li>
+      </ul>
+    </li>
+    <li id="sidebar1" class="p-20">
+      <!-- Twitter -->
+      <div class="twitter">
+        <h6 class="follow-us"><i class="ion-social-twitter"></i> Follow us on 肝帝</h6>
+        <div class="tweet">
+          <h3>@TL</h3>
+          <p>头像上的绿色点代表在线，灰色为不在（手机端请点退出登录方可为离线状态）<br><a href="#">#小诸葛Tips</a>.</p>
+        </div>
+        <div class="tweet">
+          <h3>@WTK</h3>
+          <p>点击好友头像可查看他信息喔~<br><a href="#">#小妲己Tips</a> .</p>
+        </div>
+        <div class="tweet">
+          <h3>@CJH</h3>
+          <p>换号请点退出登陆后再换号 <br><a href="#">#蔡文姬Tips</a> <a href="#">#一人一号</a> 学号对应制.</p>
+        </div>
+        <div class="tweet">
+          <h3>@TL</h3>
+          <p>点击头像后再资料界面点击"我的博客"，即可查看好友博客<br><a href="#">#蔡文姬Tips</a> <a href="#">#一人一号</a> 学号对应制.</p>
+        </div>
+        <div class="tweet">
+          <h3>@TL</h3>
+          <p>上方有查找用户框哦<br><a href="#">#曹大哥Tips</a> <a href="#">#回车/点'搜'即可查询</a> 姓名对应制.</p>
+        </div>
+        <div class="tweet">
+          <h3>@TL</h3>
+          <p><a href="#">#马超Tips</a> <a href="#">#请多多撰写博客并参与他人博客互动~</a> 等级成长制.</p>
+        </div>
+        <div class="tweet">
+          <h3>@TL</h3>
+          <p><a href="#">#武则天Tips</a> <a href="#">#项目还在开发完善中</a> 有bug请联系开发人员.</p>
+        </div>
+        <div class="tweet">
+          <h3>@END</h3>
+          <p><a href="#">#Tips</a> <a href="#">#END</a> 不要忘记打赏资助我们哦</p>
+        </div>
+      </div>
+
+
+    </li>
+    <li id="sidebar2" class="p-20">
+
+      <!-- Chat -->
+<!--      隐藏的数组大小-->
+      <input type="hidden" id="size2" th:value="${userModel.size}"/>
+
+      好友栏
+      <div th:each="friend2 : ${userModel.friendlist}">
+<!--        防止一留言就删除-->
+        <div th:id="${friend2Stat.index}+100000" th:value="${friend2.id}">
+            <div class="chat-sidebar">
+              <div class="chat-img">
+                <a th:href="@{'/user/'+${friend2.userId}}"><img th:src="@{'/login/picture?name='+${friend2.headpicture}}" class="cricle"></a>
+    <!--            green在线 red有消息 grey不在线-->
+                <span th:if="${friend2.state} eq 0">
+                    <span class="dot grey"></span>
+                </span>
+                <span th:if="${friend2.state} eq 1">
+                    <span class="dot green"></span>
+                </span>
+              </div>
+              <div class="chat-message">
+                <p><div style="font-weight: bolder"th:text="${friend2.name}"></div></p>
+                  <span style="font-weight: bold" th:text="'学号: '+${friend2.userId}"></span><br>
+                  <span style="font-weight: bold" th:text="'专业: '+${friend2.speciality}"></span><br>
+                <span th:if="${friend2.state} eq 0">
+                  <span class="medium">离线</span>
+                </span>
+                <span th:if="${friend2.state} eq 1">
+                  <span class="medium">在线</span>
+                </span>
+              </div>
+            </div>
+            <a th:href="@{'/chat/toChat/'+${friend2.id}}" style="font-size: 15px;font-weight:bold;color: #00bcd4;margin-left: 80px;width: 100px" >留言</a>
+            <button th:id="${friend2Stat.index}" th:value="${friend2.id}" class="ion-android-delete" style="width:130px;height:30px;font-style:italic;font-size: 15px;background-color:white;font-weight:bold;color: #00bcd4;margin-left: 0px">删好友</button>
+
+            <hr style="color: #00bcd4;size: 5px"/>
+          </div>
+      </div>
+<!--      非好友-->
+
+
+    </li>
+  </ul>
+  <!-- End of Sidebars -->
+
+</div>
+<!-- End of Main Container -->
+<!-- Scripts -->
+<script src="/js/helper.js"></script>
+<script src="/js/vendor/HeadsUp.js"></script>
+<script src="/js/vendor/jquery.smoothState.js"></script>
+<script src="/js/vendor/chart.min.js"></script>
+<script src="/js/vendor/jquery.mixitup.min.js"></script>
+<script src="/js/vendor/jquery.swipebox.min.js"></script>
+<script src="/js/vendor/masonry.min.js"></script>
+<script src="/js/vendor/swiper.min.js"></script>
+<script src="/js/vendor/materialize.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+  var rowStr2;
+  var name;
+  var userId;
+  var speciality;
+  var size2 = document.getElementById("size2").valueOf();
+  var size = size2.value;
+
+  //删除好友
+  for(let i = 0 ; i < size;i++){
+    $("#"+i).click(function () {
+      var p = document.getElementById(i).valueOf();
+      // 因为p对应div标签，要获取value必须用getattribute函数
+      var b = p.getAttribute("value");
+              document.getElementById(i+100000).innerHTML = "";
+              //发送请求
+              $.ajax({
+                url: '/user/delete/' + b,
+                type: "post",
+
+              })
+            }
+    )
+  }
+
+
+  //查找好友
+  $("#input_search_btn").click(function () {
+    //获取搜索关键字
+    var keyWord = $("#input_search").val();
+    //先清空搜索出来的东西
+    document.getElementById('sidebar2').innerHTML = "";
+    //发送请求
+    $.ajax({
+      url: '/user/searchpageList?keyWord=' + keyWord,
+      type: "post",
+      success: function (result) {
+        for(var i in result){
+          name = result[i].name;
+          userId = result[i].userId;
+          speciality = result[i].speciality;
+          id = result[i].id;
+          console.log(i.userId)
+          rowStr2 = '        <div class="chat-sidebar">\n' +
+                  '          <div class="chat-img">\n' +
+                  '            <a href="/user/'+result[i].userId+'">'+'<img alt="" class="cricle" src="/login/picture?name='+result[i].headpicture+'"'+'></a>\n' +
+                  '<!--            green在线 red有消息 grey不在线-->\n' +
+                  '            <span class="dot green"></span>\n' +
+                  '          </div>\n' +
+                  '          <div class="chat-message">\n' +
+                  '            <p><div style="font-weight: bolder">'+'姓名: '+name+'</div></p>\n' +
+                  '              <span style="font-weight: bold">'+'学号: '+userId+'</span><br>\n' +
+                  '              <span style="font-weight: bold">'+'专业: '+speciality+'</span><br>\n' +
+                  '              <span class="medium">online</span>\n' +
+                  '          </div>\n' +
+                  '        </div>\n' +
+                  '        <a href="/chat/toChat/'+id+'" style="font-size: 15px;font-weight:bold;color: #00bcd4;margin-left: 80px;width: 100px" >留言</a>\n' +
+                  '        <a href="/user/add/'+id+'" class="ion-android-add" style="width:130px;height:30px;font-style:italic;font-size: 15px;font-weight:bold;color: #00bcd4;margin-left: 0px">加好友</a>\n' +
+                  '\n' +
+                  '        <hr style="color: #00bcd4;size: 5px"/>'
+          $('#sidebar2').append(rowStr2)
+        }
+      }
+    });
+  });
+
+
+  $("#input_search").keydown(function (e) {//当按下按键时
+
+    if (e.which == 13) {//.which属性判断按下的是哪个键，回车键的键位序号为13
+      $('#input_search_btn').trigger("click");//触发搜索按钮的点击事件
+    }
+  });
+
+
+</script>
+</body>
+</html>

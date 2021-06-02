@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发人员介绍</title>
+    <link href="http://cdn.bootstrapmb.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/normalize2.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style type="text/css">
+        .demo{padding: 2em 0;}
+        .our-team{
+            padding: 30px 0 40px;
+            background: #f7f5ec;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .our-team .pic{
+            display: inline-block;
+            width: 130px;
+            height: 130px;
+            margin-bottom: 50px;
+            z-index: 1;
+            position: relative;
+        }
+        .our-team .pic:before{
+            content: "";
+            width: 100%;
+            height: 0;
+            border-radius: 50%;
+            background: #ee4266;
+            position: absolute;
+            bottom: 135%;
+            right: 0;
+            left: 0;
+            opacity: 0.2;
+            transform: scale(3);
+            transition: all 0.3s linear 0s;
+        }
+        .our-team:hover .pic:before{ height: 100%; }
+        .our-team .pic:after{
+            content: "";
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #ee4266;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .our-team .pic img{
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            transform: scale(1);
+            transition: all 0.9s ease 0s;
+        }
+        .our-team:hover .pic img{
+            box-shadow: 0 0 0 14px #f7f5ec;
+            transform: scale(0.7);
+        }
+        .our-team .team-content{ margin-bottom: 30px; }
+        .our-team .title{
+            font-size: 22px;
+            font-weight: 700;
+            color: #4e5052;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin-bottom: 5px;
+        }
+        .our-team .post{
+            display: block;
+            font-size: 15px;
+            color: #4e5052;
+            text-transform:capitalize;
+        }
+        .our-team .social{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: #eb1768;
+            position: absolute;
+            bottom: -100px;
+            left: 0;
+            transition: all 0.5s ease 0s;
+        }
+        .our-team:hover .social{ bottom: 0; }
+        .our-team .social li{ display: inline-block; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px;
+            font-size: 17px;
+            color: #fff;
+            transition: all 0.3s ease 0s;
+        }
+        .our-team .social li a:hover{
+            color: #eb1768;
+            background: #f7f5ec;
+        }
+        @media only screen and (max-width: 990px){
+            .our-team{ margin-bottom: 30px; }
+        }
+        </style>
+
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: hsla(242, 30%, 5%, 1);
+        }
+
+        canvas {
+            width: 100%;
+        }
+    </style>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+</head>
+
+<body>
+<canvas id='canv'></canvas>
+<!-- partial -->
+<script src='/js/css-doodle.min.js'></script>
+
+
+<!-- Toolbar -->
+        <a href="/login/toIndex">
+            <i class="ion-log-out white-text" style="margin-left: 80px;font-weight: bold;">点我离开</i>
+            <br>
+            <i class="ion-ios-paw white-text" style="margin-left: 80px;font-weight: bold;">(下滑点击头像即可查看)</i>
+        </a>
+<br><br><br><br><br><br><br><br>
+
+<div class="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="our-team">
+                    <div class="pic">
+                        <img src="/headpicture/tl.jpg">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="title">谭龙</h3>
+                        <span class="post">总监开发、架构设计、Bug克星</span>
+                    </div>
+                    <ul class="social">
+                        <li><a th:href="@{'/user/'+'18130231'}" class="fa fa-facebook">资料</a></li>
+                        <li><a th:href="@{'/blog/'+'1'}" class="fa fa-twitter">博客</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="our-team">
+                    <div class="pic">
+                        <img src="/headpicture/wtk.jpg">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="title">王天科</h3>
+                        <span class="post">网页设计、特立独行、数据库设计</span>
+                    </div>
+                    <ul class="social">
+                        <li><a th:href="@{'/user/'+'18130233'}" class="fa fa-facebook">资料</a></li>
+                        <li><a th:href="@{'/blog/'+'11'}" class="fa fa-twitter">博客</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="our-team">
+                    <div class="pic">
+                        <img src="/headpicture/cjh.jpg">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="title">陈嘉豪</h3>
+                        <span class="post">UI总监、需求分析师、潜力股</span>
+                    </div>
+                    <ul class="social">
+                        <li><a th:href="@{'/user/'+19130259}" class="fa fa-facebook">资料</a></li>
+                        <li><a th:href="@{'/blog/'+'12'}" class="fa fa-twitter">博客</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="our-team">
+                    <div class="pic">
+                        <img src="/headpicture/hanpi.gif">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="title">憨批Per</h3>
+                        <span class="post">凑人数大师</span>
+                    </div>
+                    <ul class="social">
+                        <li><a href="#" class="fa fa-facebook">无</a></li>
+                        <li><a href="#" class="fa fa-twitter">无</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    /*
+    (Book REF) HTML5 Canvas Ch. 5:  Math, Physics, and Animation ::: Uniform Circular Motion
+    By Steve Fulton and Jeff Fulton
+    */
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+    window.addEventListener('load', start, false);
+
+    var c,
+        $,
+        w,
+        h,
+        msX,
+        msY,
+        midX,
+        midY,
+        num = 650,
+        parts = [],
+        begin = 50,
+        repeat = 20,
+        end = Math.PI * 2,
+        force = null,
+        msdn = false;
+
+    function start() {
+        c = document.getElementById('canv');
+        $ = c.getContext('2d');
+        w = c.width = window.innerWidth;
+        h = c.height = window.innerHeight;
+        midX = w / 2;
+        midY = h / 2;
+        force = Math.max(w, h) * 0.09;
+        flow = begin;
+
+        window.requestAnimFrame(create);
+        run();
+    }
+
+    function run() {
+        window.requestAnimFrame(run);
+        go();
+    }
+
+    function Part() {
+        this.deg = 0;
+        this.rad = 0;
+        this.x = 0;
+        this.y = 0;
+        this.distX = 0;
+        this.distY = 0;
+        this.color = 'rgb(' + Math.floor(Math.random() * 130) + ',' + Math.floor(Math.random() * 50) + ',' + Math.floor(Math.random() * 100) + ')';
+        this.size;
+    }
+
+    function create() {
+        var n = num;
+        while (n--) {
+            var p = new Part();
+            p.deg = Math.floor(Math.random() * 360);
+            p.rad = Math.floor(Math.random() * w * 0.5);
+            p.x = p.distX = Math.floor(Math.random() * w);
+            p.y = p.distY = Math.floor(Math.random() * h);
+            p.size = 1 + Math.floor(Math.random() * (p.rad * 0.055));
+            parts[n] = p;
+        }
+        c.onmousemove = msmv;
+        c.onmousedown = msdn;
+        c.onmouseup = msup;
+
+        var int = setInterval(function () {
+            flow--;
+            if (flow === repeat) clearInterval(int);
+        }, 20);
+    }
+
+    function go() {
+        $.globalCompositeOperation = 'source-over';
+        $.fillStyle = 'hsla(242, 30%, 5%, .55)';
+        $.fillRect(0, 0, w, h);
+        $.globalCompositeOperation = 'lighter';
+        var mx = msX;
+        var my = msY;
+        var bounds = force;
+        if (msdn) {
+            bounds = force * 2;
+        }
+        var n = num;
+        while (n--) {
+            var p = parts[n];
+            var radi = Math.PI / 180 * p.deg;
+            p.distX = midX + p.rad * Math.cos(radi);
+            p.distY = midY + p.rad * Math.sin(radi) * 0.4;
+            if (mx && my) {
+                var react = Math.floor((bounds * 0.5) + Math.random() * (bounds * 0.9));
+                if (p.distX - mx > 0 &&
+                    p.distX - mx < bounds &&
+                    p.distY - my > 0 &&
+                    p.distY - my < bounds) {
+                    p.distX += react;
+                    p.distY += react;
+                } else if (p.distX - mx > 0 &&
+                    p.distX - mx < bounds &&
+                    p.distY - my < 0 &&
+                    p.distY - my > -bounds) {
+                    p.distX += react;
+                    p.distY -= react;
+                } else if (p.distX - mx < 0 &&
+                    p.distX - mx > -bounds &&
+                    p.distY - my > 0 &&
+                    p.distY - my < bounds) {
+                    p.distX -= react;
+                    p.distY += react;
+                } else if (p.distX - mx < 0 &&
+                    p.distX - mx > -bounds &&
+                    p.distY - my < 0 &&
+                    p.distY - my > -bounds) {
+                    p.distY -= react;
+                    p.distY -= react;
+                }
+            }
+            p.x += ((p.distX - p.x) / flow);
+            p.y += ((p.distY - p.y) / flow);
+            var x = p.x;
+            var y = p.y;
+            var s = p.size * (p.y * 1.5 / h);
+            if (s < 0.1) {
+                s = 0;
+            }
+            $.beginPath();
+            $.fillStyle = p.color;
+            $.arc(x, y, s, 0, end, true);
+            $.fill();
+            $.closePath();
+            var vary;
+            if (p.size < 2) {
+                vary = 4;
+            } else if (p.size < 3) {
+                vary = 3;
+            } else if (p.size < 4) {
+                vary = 2;
+            } else {
+                vary = 1;
+            }
+            vary *= (p.y / (h * 0.9));
+            p.deg += vary;
+            p.deg = p.deg % 360;
+        }
+    }
+
+    function msmv(e) {
+        var p = getPos(e.target);
+        var sX = window.pageXOffset;
+        var sY = window.pageYOffset;
+        msX = e.clientX - p.x + sX;
+        msY = e.clientY - p.y + sY;
+    }
+
+    function msdn(e) {
+        msdn = true;
+    }
+
+    function msup(e) {
+        msdn = false;
+    }
+
+    function getPos(el) {
+        var cosmo = {};
+        cosmo.x = el.offsetLeft;
+        cosmo.y = el.offsetTop;
+        while (el.offsetParent) {
+            el = el.offsetParent;
+            cosmo.x += el.offsetLeft;
+            cosmo.y += el.offsetTop;
+        }
+        return cosmo;
+    }
+</script>
+
+
+</body>
+</html>

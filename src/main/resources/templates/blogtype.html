@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
+    <!-- Fontawesome CSS-->
+    <link rel="stylesheet" href="/assets/css/all.css" />
+
+    <!-- slick css -->
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/slick-theme.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/preloader.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+
+    <title>类别结果</title>
+</head>
+
+<body>
+<!-- preloader -->
+<div class="preloader-wrapper">
+    <div class="preloader">
+        <div class="preloader-circle" id="status">
+            <div></div>
+        </div>
+    </div>
+</div>
+<!-- preloader end -->
+
+<main class="kavya-search" style="background-color: seashell">
+
+    <!-- Toolbar -->
+
+        <!-- Navbar -->
+        <div class="kavya-navbar" id="sticky-top">
+            <div class="container">
+                <nav class="nav-menu-wrapper">
+            <span class="navbar-toggle" id="navbar-toggle">
+            </span>
+
+                    <div class="sticky-logo">
+                        <a href="/login/toIndex">
+                            <p>HBUE</p>
+                        </a>
+                    </div>
+<!--                    -->
+                    <div class="sticky-search">
+                        <div class="search-wrapper">
+                            <div class="search-icon">
+                                <button class="open-search-btn"><i class="fa fa-search"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+
+        </div>
+        <!-- Navbar end -->
+        <!-- Search overlay -->
+        <div id="search-overlay" class="search-section">
+            <span class="closebtn"><i class="fas fa-times"></i></span>
+            <div class="overlay-content">
+                <form action="/blog/searchBlog">
+                    <input type="text" placeholder="博客内容/题目" name="keyword">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <!-- Search overlay end -->
+                </div>
+            </div>
+        </div>
+        <!-- sticky sidebar end -->
+
+        <div class="body-overlay"></div>
+    </header>
+    <!-- header end -->
+
+    <!-- Page header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-title" style="width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                        &nbsp;<h6 style="color:bisque">按点赞数递减排序查询</h6>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/index/blogindex">返回推荐页</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=JAVA">JAVA</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=C/C++">C/C++</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=PYTHON">PYTHON</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=PTA题集">PTA题集</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=硬件操作">硬件操作</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=LINUX">LINUX</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=HTML/CSS">HTML/CSS</a></li>
+                                <li class="breadcrumb-item" style="font-weight: bold;"><a href="/blog/type?type=其它">其它</a></li>
+<!--                                <li style="font-weight: bold;" class="breadcrumb-item active" aria-current="page" th:text="${articlemodel.type}"></li>-->
+                                <li style="font-size: 18px;font-weight: bolder" class="breadcrumb-item active" aria-current="page" th:text="${articlemodel.type}"></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- page header end -->
+
+    <!-- search results -->
+    <section class="search-results">
+        <div class="container">
+            <h5 class="search-result-title" style="font-weight: bold; font-size: 20px;color: #2aabd2">不错不错! 我们找到了<nobr th:text="${articlemodel.sum}"/>篇文章.</h5>
+            <div class="row align-items-center">
+
+
+                <div th:each="article:${articlemodel.articleList}"  class="col-md-12 col-lg-6">
+                    <div class="card p-3">
+                        <div class="row no-gutters align-items-center align-items-center">
+                            <div class="col-md-5">
+                                <a th:href="@{'/blog/content2/'+${article.id}}"> <img th:src="@{'/login/cover?name='+${article.cover}}" class="card-img" alt=""></a>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <ul class="category-tag-list">
+                                        <li class="category-tag-name">
+                                            <a th:text="${article.type}"></a>
+                                        </li>
+                                    </ul>
+                                    <h5 style="width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" class="card-title title-font" th:text="${article.title}"></h5>
+                                    <p style="width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" class="card-text" th:text="${article.summarize}"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- search resukts end -->
+
+    <!-- Pagination section -->
+    <section class="pagination-section">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+<!--                <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+                <li class="page-item"><a class="page-link" th:href="@{/blog/searchBlog(type = ${articlemodel.type})}">首</a></li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/blog/type(type = ${articlemodel.type},page = ${articlemodel.articleList.hasPrevious()} ? ${articlemodel.articleList.getNumber() } : 1)}" tabindex="-1"><i class="fas fa-arrow-left"></i></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/blog/type(type = ${articlemodel.type},page = ${articlemodel.articleList.hasNext()} ? ${articlemodel.articleList.getNumber()} + 2 : ${articlemodel.articleList.totalPages})}"><i class="fas fa-arrow-right"></i></a>
+                </li>
+                <li class="page-item"><a class="page-link" th:href="@{/blog/type(page = ${articlemodel.articleList.totalPages},type = ${articlemodel.type})}">尾</a></li>
+
+
+            </ul>
+        </nav>
+    </section>
+    <!-- Pagination section end -->
+
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#">
+                        <h5 class="brand-name">HBUE</h5>
+                    </a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy;2021. Theme designed by <a href="/index/peopleIntroduce">谭龙，王天科，陈嘉豪</a> </p>
+                </div>
+                <div class="social-links">
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <div id="stop" class="scroll-to-top">
+        <span><a href="#"><i class="fas fa-arrow-up"></i></a></span>
+    </div>
+    <!-- Scroll to top end -->
+</main>
+
+<!-- Javascript -->
+<script src="/assets/js/jquery-3.4.1.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/slick.min.js"></script>
+<script src="/assets/js/jquery.sticky.js"></script>
+<script src="/assets/js/ResizeSensor.min.js"></script>
+<script src="/assets/js/theia-sticky-sidebar.min.js"></script>
+<script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

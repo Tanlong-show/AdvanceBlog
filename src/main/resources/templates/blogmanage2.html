@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+
+    <title>博客管理端(普通用户端)</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/swipebox.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.7.1.min.js"></script>
+</head>
+
+<body>
+
+<!-- Main Container -->
+<div id="main" class="main">
+
+    <!-- Toolbar -->
+    <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left"  >
+            <a href="/login/toIndex">
+                <i class="ion-log-out m-1 white-text"></i>
+            </a>
+        </div>
+    </div>
+    <br><br><br>
+    <!-- End of Toolbar -->
+
+    <!-- Page Contents -->
+    <div class="page grey lighten-4 animated fadeinup">
+
+        <!-- Search bar -->
+        <div class="p-20">
+            <nav>
+                <div class="nav-wrapper">
+                    <form action="/blog/managesearchBlog2">
+                        <div class="input-field">
+                            <input id="search2" type="search" name="keyword" placeholder="搜索博客内容/简介" required>
+                            <label for="search2"><i class="ion-android-search black-text text-lighten-3"></i></label>
+                            <i class="ion-android-close"></i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Search Result -->
+        <ul class="collapsible popout search-results" data-collapsible="accordion">
+            <li class="animated fadeinright delay-1">
+                <div class="collapsible-header"><i class="ion-android-more-vertical right"></i>这里是普通用户端博客管理(点我有惊喜)</div>
+                <div class="collapsible-body"><p>想提升权限嘛？联系开发者哦~</p></div>
+            </li>
+            <li class="animated fadeinright delay-1">
+                <div class="collapsible-header"><i class="ion-android-more-vertical right"></i>删除会刷新页面</div>
+                <div class="collapsible-body"><p>防止多次误点删除导致不可逆后果，用刷新来提醒限制</p></div>
+            </li>
+            <li class="animated fadeinright delay-3">
+                <div class="collapsible-header"><i class="ion-android-more-vertical right"></i>建议</div>
+                <div class="collapsible-body"><p>请勿自己乱删自己的博客，结果不可逆哦。</p></div>
+            </li>
+
+            <li class="animated fadeinright delay-6">
+                <div class="collapsible-header"><i class="ion-android-more-vertical right"></i>点击文章标题可查看文章内容</div>
+                <div class="collapsible-body"><p>ps:修改时需要重新选择文章类别，其他内容则不变，修改前也请有充分理由。</p></div>
+            </li>
+        </ul>
+
+
+        <!--        th:id="${articleStat.index}-->
+        <!-- Sharing -->
+        <div th:each="article:${blogmanageModel.articleList}" class="card m-20">
+            <div class="card-author">
+                <div class="media-top-object middle p-10 m-0">
+                    <img th:src="@{'/login/picture?name='+${blogmanageModel.user.headpicture}}" alt="" class="media-left avatar small">
+                    <div class="media-body">
+                        <span style="font-size: 14px;color: red;" th:text="${blogmanageModel.user.name}"></span>
+                    </div>
+                        <a th:href="@{'/blog/content2/'+${article.id}}" th:text="${article.title}" style="font-size:15px;color:brown;width:45%;display:-webkit-box;-webkit-box-orient:vertical;word-break:break-all;-webkit-line-clamp:1;overflow:hidden;text-overflow:ellipsis;"></a>
+                </div>
+            </div>
+            <div class="card-content" style="font-size: 10px;color: #2aabd2;">
+                <nobr th:utext="${article.content}" style="font-size: 10px;color: #2aabd2;height:85px;width:90%;display:-webkit-box;-webkit-box-orient:vertical;word-break:break-all;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;"></nobr>
+            </div>
+            <div class="card-feedback">
+                <div class="card-users">
+                    <i class="ion-ios-heart accent-text"></i> <span th:text="${article.pageLikes}"></span>
+                    <i class="ion-ios-eye"></i> <span th:text="${article.pageViews}"></span>
+                </div>
+                <div class="card-share">
+
+                    <a th:href="@{'/blog/deleteArticle2/'+${article.id}}">
+                        <i class="ion-android-delete"></i> <span>删除</span>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/blog/toto/'+${article.id}}">
+                        <i class="ion-medkit"></i> <span>修改</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer primary-color">
+            <div class="section center">
+                <h2 class="heading white-text">加油</h2>
+                <p class="center-align grey-text text-lighten-4">成功在于你是否为——肝帝</p>
+                <div class="footer-icons">
+                    <i class="ion-social-facebook m-10 white-text"></i>
+                    <i class="ion-social-twitter m-10 white-text"></i>
+                    <i class="ion-social-pinterest m-10 white-text"></i>
+                    <i class="ion-social-instagram m-10 white-text"></i>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container center">
+                    <span>Made with <i class="ion-ios-heart"></i> by 谭龙 王天科 陈嘉豪</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- End of Page Contents -->
+
+
+
+</div>
+<!-- End of Main Container -->
+
+<!-- Scripts -->
+<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="/js/helper.js"></script>
+<script src="/js/vendor/HeadsUp.js"></script>
+<script src="/js/vendor/jquery.smoothState.js"></script>
+<script src="/js/vendor/chart.min.js"></script>
+<script src="/js/vendor/jquery.mixitup.min.js"></script>
+<script src="/js/vendor/jquery.swipebox.min.js"></script>
+<script src="/js/vendor/masonry.min.js"></script>
+<script src="/js/vendor/swiper.min.js"></script>
+<script src="/js/vendor/materialize.min.js"></script>
+</body>
+</html>

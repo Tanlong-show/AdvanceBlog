@@ -1,0 +1,125 @@
+﻿
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/main2.css">
+    <meta charset="UTF-8">
+    <title>智能推荐</title>
+    <link rel="stylesheet" type="text/css" href="/css/style4.css" />
+</head>
+
+<body >
+<div id="toolbar" class="primary-color tool-login">
+    <div class="open-left"  >
+        <a href="/login/toIndex">
+            <i class="ion-log-out m-1 white-text"></i>
+        </a>
+    </div>
+</div>
+
+    <div class="newsCenterPanel">
+        <div class="title">
+            <p style="font-family:'Great Vibes',cursive;color: #370775;font-weight: bolder">文章推荐<p>
+        </div>
+        <div class="newsCenterPanel_inner">
+
+            <div class="newContentBox odd">
+                <a th:href="@{'/blog/content2/'+${bloglikemodel.articles[0].id}}" hidefocus="true" href="#">
+                    <div class="time">
+                        <p class="day" th:text="${bloglikemodel.similars[0]}"></p>
+                        <p class="ym" style="color: red;font-weight: bolder">推荐指数</p>
+                    </div>
+                    <div class="newTitle" th:text="${bloglikemodel.articles[0].title}"></div>
+                    <div class="newTitleIcon"></div>
+                    <div class="border"></div>
+                    <div class="newContent" th:text="${bloglikemodel.articles[0].summarize}">
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="newContentBox even">
+                <a th:href="@{'/blog/content2/'+${bloglikemodel.articles[1].id}}" hidefocus="true" href="#">
+                    <div class="time">
+                        <p class="day" th:text="${bloglikemodel.similars[1]}"></p>
+                        <p class="ym" style="color: red;font-weight: bolder">推荐指数</p>
+                    </div>
+                    <div class="newTitle" th:text="${bloglikemodel.articles[1].title}"></div>
+                    <div class="newTitleIcon"></div>
+                    <div class="border"></div>
+                    <div class="newContent" th:text="${bloglikemodel.articles[1].summarize}">
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="newContentBox odd">
+                <a th:href="@{'/blog/content2/'+${bloglikemodel.articles[2].id}}" hidefocus="true" href="#">
+                    <div class="time">
+                        <p class="day" th:text="${bloglikemodel.similars[2]}"></p>
+                        <p class="ym" style="color: red;font-weight: bolder">推荐指数</p>
+                    </div>
+                    <div class="newTitle" th:text="${bloglikemodel.articles[2].title}"></div>
+                    <div class="newTitleIcon"></div>
+                    <div class="border"></div>
+                    <div class="newContent" th:text="${bloglikemodel.articles[2].summarize}">
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="newContentBox even">
+                <a th:href="@{'/blog/content2/'+${bloglikemodel.articles[3].id}}" hidefocus="true" href="#">
+                    <div class="time">
+                        <p class="day" th:text="${bloglikemodel.similars[3]}"></p>
+                        <p class="ym" style="color: red;font-weight: bolder">推荐指数</p>
+                    </div>
+                    <div class="newTitle" th:text="${bloglikemodel.articles[3].title}"></div>
+                    <div class="newTitleIcon"></div>
+                    <div class="border"></div>
+                    <div class="newContent" th:text="${bloglikemodel.articles[3].summarize}">
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="newContentBox odd">
+                <a th:href="@{'/blog/content2/'+${bloglikemodel.articles[4].id}}" hidefocus="true" href="#">
+                    <div class="time">
+                        <p class="day" th:text="${bloglikemodel.similars[4]}"></p>
+                        <p class="ym" style="color: red;font-weight: bolder">推荐指数</p>
+                    </div>
+                    <div class="newTitle" th:text="${bloglikemodel.articles[4].title}"></div>
+                    <div class="newTitleIcon"></div>
+                    <div class="border"></div>
+                    <div class="newContent" th:text="${bloglikemodel.articles[4].summarize}">
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="newContentBox even">
+                <a th:href="@{'/blog/content2/'+${bloglikemodel.articles[5].id}}" hidefocus="true" href="#">
+                    <div class="time">
+                        <p class="day" th:text="${bloglikemodel.similars[5]}"></p>
+                        <p class="ym" style="color: red;font-weight: bolder">推荐指数</p>
+                    </div>
+                    <div class="newTitle" th:text="${bloglikemodel.articles[5].title}"></div>
+                    <div class="newTitleIcon"></div>
+                    <div class="border"></div>
+                    <div class="newContent" th:text="${bloglikemodel.articles[5].summarize}">
+                    </div>
+                </a>
+
+            </div>
+            <a th:href="@{'/action/bloglike/'+${bloglikemodel.id}}" style="color:salmon;margin-left: 520px;font-weight: bolder;"><i style="margin-top: 10px;color: salmon;" class="ion-refresh"></i>换一换</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

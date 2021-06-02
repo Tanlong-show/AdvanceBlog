@@ -1,0 +1,155 @@
+﻿<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="theme-color" content="#e90101"/>
+<title>结果页</title>
+<meta name="author" content="Themezinho">
+<meta name="description" content="For all kind of video streaming website">
+<meta name="keywords" content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+
+<!-- CSS FILES -->
+    <link rel="stylesheet" href="/css/lineicons.css">
+    <link rel="stylesheet" href="/css/fancybox.min.css">
+    <link rel="stylesheet" href="/css/swiper3.min.css">
+    <link rel="stylesheet" href="/css/bootstrap3.min.css">
+    <link rel="stylesheet" href="/css/style3.css">
+</head>
+<body>
+	<nav class="mobile-menu">
+
+		<div class="inner">
+		<div class="mobile-search">
+		<h6>模糊查询</h6>
+            <form action="/movie/findmovie">
+                <input type="search" placeholder="输入关键字词" name="keyword">
+                <input type="submit" value="搜索">
+            </form>
+		</div>
+		<!-- end mobile-search -->
+    <!-- end button-account -->
+	<div class="site-menu">
+    <ul>
+      <li><a href="/index/playtv">返回主页</a></li>
+
+    </ul>
+  </div>
+  <!-- end site-menu -->
+			</div>
+		<!-- end inner -->
+	</nav>
+	<!-- end mobile-menu -->
+<nav class="navbar">
+  <!-- end logo -->
+  <div class="site-menu">
+    <ul>
+      <li><a href="/index/playtv">返回主页</a></li>
+    </ul>
+  </div>
+  <!-- end site-menu -->
+  <div class="user-menu">
+    <div class="navbar-search"> <i class="lni lni-search-alt"></i> </div>
+  </div>
+  <!-- end user-menu -->
+    <div class="hamburger-menu">
+        <button class="hamburger">
+            <svg width="45" height="45" viewBox="0 0 100 100">
+                <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                <path class="line line2" d="M 20,50 H 80" />
+                <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+            </svg>
+        </button>
+    </div>
+    <!-- end hamburger-menu -->
+</nav>
+<!-- end navbar -->
+<section class="search-box">
+  <div class="container">
+    <h6>模糊查询</h6>
+      <form action="/movie/findmovie">
+      <input type="search" placeholder="输入关键字词" name="keyword">
+      <input type="submit" value="搜索">
+    </form>
+    <ul>
+      <li><a href="#">五杀</a></li>
+      <li><a href="#">秀</a></li>
+      <li><a href="#">越塔</a></li>
+    </ul>
+  </div>
+  <!-- end container --> 
+</section>
+<header class="page-header">
+	<div class="container">
+	<h1 style="color:red;">ShowTime</h1>
+	</div>
+	</header>
+<!-- end page-header -->
+<main>
+  <!-- end content-section -->
+	<section class="content-section" data-background="#f9f5f7">
+    <div class="container">
+      <div class="row">
+		   <div class="col-12">
+          <div class="section-title">
+            <h6>通过我们不懈努力</h6>
+            <h2>为您挖掘出了以下影片</h2>
+          </div>
+          <!-- end section-title --> 
+        </div>
+        <!-- end col-12 -->
+		<div class="col-12">
+		  	<div class="carousel-tv-shows" >
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" th:each="movie:${moviesModel.movies}">
+					<div class="category-thumb" >
+            <figure class="category-image"> <img src="/images/houzi.jpg" alt="Image"> </figure>
+            <div class="category-content">
+              <ul class="tags">
+                <li th:text="${movie.userName}"></li>
+              </ul>
+              <h3 class="name" th:text="${movie.title}"></h3>
+              <div class="play-btn"><a th:href="@{/movie/video/}+${movie.id}">+</a></div>
+              <small class="details" th:text="${movie.time}"></small> </div>
+            <!-- end category-content --> 
+          </div>
+          <!-- end category-thumb --> 
+					</div>
+					<!-- end swiper-slide -->
+				</div>
+				<!-- end swiper-wrapper -->
+				<div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+			</div>
+			<!-- end carousel-tv-shows -->
+		  </div>
+		  <!-- end col-12 -->
+		</div>
+      <!-- end row --> 
+    </div>
+    <!-- end container --> 
+  </section>
+  <!-- end content-section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+        <!-- end col-4 --> 
+      </div>
+      <!-- end row --> 
+    </div>
+    </div>
+    <!-- end bottom-bar --> 
+  </footer>
+  <!-- end footer --> 
+</main>
+
+<!-- JS FILES -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/swiper.min.js"></script>
+    <script src="/js/fancybox.min.js"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
